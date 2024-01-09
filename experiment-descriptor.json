@@ -1,0 +1,61 @@
+{
+  "unit-type": "lu",
+  "label": "",
+  "basedir": ".",
+  "LaTeXinMD": true,
+  "units": [
+    {
+      "unit-type": "aim"
+    },
+    {
+      "target": "theory.html",
+      "source": "theory.md",
+      "label": "Theory",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
+      "unit-type": "task",
+      "label": "Pretest",
+      "content-type": "assesment",
+      "source": "pretest.json",
+      "target": "pretest.html"
+    },
+    {
+      "target": "procedure.html",
+      "source": "procedure.md",
+      "label": "Procedure",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
+      "target": "linear-dependence.html",
+      "source": "simulation/linear-dependence.html",
+      "label": "Part-1: Preliminaries",
+      "unit-type": "task",
+      "content-type": "simulation"
+    },
+    {
+      "target": "block-code.html",
+      "source": "simulation/block-code.html",
+      "label": "Part-2: Linear Block Codes",
+      "unit-type": "task",
+      "content-type": "simulation"
+    },
+    {
+      "unit-type": "task",
+      "label": "Posttest",
+      "content-type": "assesment",
+      "source": "posttest.json",
+      "target": "posttest.html"
+    },
+    {
+      "target": "references.html",
+      "source": "references.md",
+      "label": "References",
+      "unit-type": "task",
+      "content-type": "text"
+    }
+    
+  ]
+}
