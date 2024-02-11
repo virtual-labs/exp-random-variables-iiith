@@ -9,7 +9,7 @@
     },
     {
       "target": "theory.html",
-      "source": "theory.md",
+      "source": "theoddddry.md",
       "label": "Theory",
       "unit-type": "task",
       "content-type": "text"
