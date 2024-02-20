@@ -5,11 +5,15 @@
   "LaTeXinMD": true,
   "units": [
     {
-      "unit-type": "aim"
+      "unit-type": "aim",
+      "label": "Aim",
+      "content-type": "text",
+      "source": "aim.md",
+      "target": "index.html"
     },
     {
       "target": "theory.html",
-      "source": "theoddddry.md",
+      "source": "theory.md",
       "label": "Theory",
       "unit-type": "task",
       "content-type": "text"
@@ -30,15 +34,8 @@
     },
     {
       "target": "linear-dependence.html",
-      "source": "simulation/linear-dependence.html",
+      "source": "simulation/sigma-algebra.html",
       "label": "Part-1: Preliminaries",
-      "unit-type": "task",
-      "content-type": "simulation"
-    },
-    {
-      "target": "block-code.html",
-      "source": "simulation/block-code.html",
-      "label": "Part-2: Linear Block Codes",
       "unit-type": "task",
       "content-type": "simulation"
     },
