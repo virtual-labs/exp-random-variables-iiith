@@ -33,7 +33,7 @@
       "content-type": "text"
     },
     {
-      "target": "linear-dependence.html",
+      "target": "sigmaAlgebra.html",
       "source": "simulation/sigma-algebra.html",
       "label": "Part-1: Preliminaries",
       "unit-type": "task",
