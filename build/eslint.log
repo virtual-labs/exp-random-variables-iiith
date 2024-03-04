@@ -1,0 +1,15 @@
+
+/home/keshav/OneDrive/UbuntuSync/VLabs/exp-random-variables-iiith/experiment/simulation/js/sigma-algebra.js
+   11:10  warning  'hide1' is defined but never used   no-unused-vars
+   25:10  warning  'hide2' is defined but never used   no-unused-vars
+   36:10  warning  'hide3' is defined but never used   no-unused-vars
+   50:10  warning  'hide4' is defined but never used   no-unused-vars
+   61:10  warning  'hide5' is defined but never used   no-unused-vars
+   75:10  warning  'hide6' is defined but never used   no-unused-vars
+   86:10  warning  'check1' is defined but never used  no-unused-vars
+  156:10  warning  'page1' is defined but never used   no-unused-vars
+  169:10  warning  'page2' is defined but never used   no-unused-vars
+  182:10  warning  'page3' is defined but never used   no-unused-vars
+
+✖ 10 problems (0 errors, 10 warnings)
+

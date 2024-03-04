@@ -35,7 +35,7 @@
     {
       "target": "sigmaAlgebra.html",
       "source": "simulation/sigma-algebra.html",
-      "label": "Part-1: Preliminaries",
+      "label": "Experiments",
       "unit-type": "task",
       "content-type": "simulation"
     },

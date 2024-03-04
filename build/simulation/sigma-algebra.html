@@ -12,7 +12,7 @@
 	<script type="text/javascript" id="MathJax-script" async
 		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 	<title>
-		Random Variables
+		Sigma Algebra
 	</title>
 </head>
 
@@ -22,38 +22,6 @@
 
 
 		<div class="columns is-centered">
-			<div class="columns is-centered">
-				<div class="column is-one-quarter v-instruction-title">
-					Tasks
-				</div>
-				<div class="column">
-					<div class="v-tabs">
-						<ul>
-							<li class="is-active" id="Task1">
-								<a>
-									Sigma Algebra
-								</a>
-							</li>
-	
-							<li id="Task2" onclick="window.location.href = 'inverse-image.html';">
-								<a>
-									Inverse image
-								</a>
-							</li>
-
-							<li id="Task3" onclick="window.location.href = 'valid-rv.html';">
-								<a>
-									Valid RV
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="columns is-centered">
-
 			<div class="column">
 				<div class="v-collapsible-instruction-container v-instruction-container">
 					<div class="v-collapsible is-size-5">Instructions</div>
@@ -214,7 +182,7 @@
 
 					<button class="v-button" role="button" onclick="check1()"> Submit </button>
 					<button class="v-button" role="button" onclick="reset1()"> Reset </button>
-					<button class="v-button" role="button" onclick="page2()"> Next </button>
+					<!-- <button class="v-button" role="button" onclick="page2()"> Next </button> -->
 				</div>
 			</div>
 
@@ -228,162 +196,14 @@
 		</div>
 	</section>
 
-	<section id="page2" style="display:none">
-		<div class="columns is-centered">
-			<div class="column is-11-desktop is-12-tablet is-12-mobile">
-				<div class="v-datalist-container components-list">
-					<br>
-					<p> 
-						Given the set s = {a,b,c,d} and a collection C = {{}.{a,b,c,d},{a},{b}}, which subset of s should be added to C for it to become a sigma algebra over s.
-					</p>
-					<br>
-				</div>
-			</div>
-		</div>
-		
-		<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
-			style="margin-top:-1.5%">
-			<div class="column is-8-desktop is-12-tablet is-12-mobile">
-				<div class="box-question">
+	
 
-					<section id="top-bar-2">
-						<div class="scroll-box-3">
-							<div id="tile-container-3">
-								<div class="tile" id="a3" display="style:block" onClick="hide3('a3', 'a4')">
-									$$ \begin{bmatrix}
-									b\end{bmatrix}$$
-								</div>
-								<div class="tile" id="b3" display="style:block" onClick="hide3('b3', 'b4')">
-									$$ \begin{bmatrix}
-									c\end{bmatrix}$$
-								</div>
-								<div class="tile" id="c3" display="style:block" onClick="hide3('c3', 'c4')">
-									$$ \begin{bmatrix}
-									d\end{bmatrix}$$
-								</div>
-								<div class="tile" id="d3" display="style:block" onClick="hide3('d3', 'd4')">
-									$$ \begin{bmatrix}
-									ab\end{bmatrix}$$
-								</div>
-								<div class="tile" id="e3" display="style:block" onClick="hide3('e3', 'e4')">
-									$$ \begin{bmatrix}
-									ac\end{bmatrix}$$
-								</div>
-								<div class="tile" id="f3" display="style:block" onClick="hide3('f3', 'f4')">
-									$$ \begin{bmatrix}
-									ad\end{bmatrix}$$
-								</div>
-								<div class="tile" id="g3" display="style:block" onClick="hide3('g3', 'g4')">
-									$$ \begin{bmatrix}
-									bc\end{bmatrix}$$
-								</div>
-								<div class="tile" id="h3" display="style:block" onClick="hide3('h3', 'h4')">
-									$$ \begin{bmatrix}
-									bd\end{bmatrix}$$
-								</div>
-								<div class="tile" id="i3" display="style:block" onClick="hide3('i3', 'i4')">
-									$$ \begin{bmatrix}
-									cd\end{bmatrix}$$
-								</div>
-								<div class="tile" id="j3" display="style:block" onClick="hide3('j3', 'j4')">
-									$$ \begin{bmatrix}
-									abc\end{bmatrix}$$
-								</div>
-								<div class="tile" id="k3" display="style:block" onClick="hide3('k3', 'k4')">
-									$$ \begin{bmatrix}
-									abd\end{bmatrix}$$
-								</div>
-								<div class="tile" id="l3" display="style:block" onClick="hide3('l3', 'l4')">
-									$$ \begin{bmatrix}
-									acd\end{bmatrix}$$
-								</div>
-								<div class="tile" id="m3" display="style:block" onClick="hide3('m3', 'm4')">
-									$$ \begin{bmatrix}
-									bcd\end{bmatrix}$$
-								</div>
-						</div>
-					</section>
-
-					<section id="drop-panel-2">
-						<div class="scroll-box-4">
-							<div id="tile-container-4">
-								<div class="tile2" id="a4" onClick="hide4('a3', 'a4')">
-									$$ \begin{bmatrix}
-									b\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="b4" onClick="hide4('b3', 'b4')">
-									$$ \begin{bmatrix}
-									c\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="c4" onClick="hide4('c3', 'c4')">
-									$$ \begin{bmatrix}
-									d\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="d4" onClick="hide4('d3', 'd4')">
-									$$ \begin{bmatrix}
-									ab\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="e4" onClick="hide4('e3', 'e4')">
-									$$ \begin{bmatrix}
-									ac\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="f4" onClick="hide4('f3', 'f4')">
-									$$ \begin{bmatrix}
-									ad\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="g4" onClick="hide4('g3', 'g4')">
-									$$ \begin{bmatrix}
-									bc\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="h4" onClick="hide4('h3', 'h4')">
-									$$ \begin{bmatrix}
-									bd\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="i4" onClick="hide4('i3', 'i4')">
-									$$ \begin{bmatrix}
-									cd\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="j4" onClick="hide4('j3', 'j4')">
-									$$ \begin{bmatrix}
-									abc\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="k4" onClick="hide4('k3', 'k4')">
-									$$ \begin{bmatrix}
-									abd\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="l4" onClick="hide4('l3', 'l4')">
-									$$ \begin{bmatrix}
-									acd\end{bmatrix}$$
-								</div>
-								<div class="tile2" id="m4" onClick="hide4('m3', 'm4')">
-									$$ \begin{bmatrix}
-									bcd\end{bmatrix}$$
-								</div>
-							</div>
-						</div>
-					</section>
-					<button class="v-button" role="button" onclick="check2()"> Submit </button>
-					<button class="v-button" role="button" onclick="reset2()"> Reset </button>
-					<button class="v-button" role="button" onclick="page1()"> Previous </button>
-
-				</div>
-			</div>
-
-			<div class="column is-3-desktop is-4-tablet is-12-mobile">
-				<div class="v-datalist-container components-list">
-					<div class="v-datalist-title">Observations</div>
-					<div id="observations2">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 
 
 	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
 	<script src="./js/sigma-algebra.js"></script>
-</body>
+<script src="../assets/js/iframeResize.js"></script></body>
 
 
 </html>
