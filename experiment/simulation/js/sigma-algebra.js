@@ -87,7 +87,7 @@ function check2() {
   }
 
   else {
-    if (m2.style.display == "flex" && l4.style.display == "flex" && i4.style.display == "flex" && d4.style.display == "flex") {
+    if (m4.style.display == "flex" && l4.style.display == "flex" && i4.style.display == "flex" && d4.style.display == "flex") {
       obs2.innerHTML = "<b>Correct Answer!!!</b>"
       obs2.style.color = "green";
     }
@@ -123,8 +123,8 @@ function reset2() {
   const obs2 = document.getElementById("observations2");
   obs2.innerHTML = "";
 
-  const array3 = ["a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3", "i3", "j3", "k3", "l3", "m3"];
-  const array4 = ["a4", "b4", "c4", "d4", "e4", "f4", "g4", "h4", "i4", "j4", "k4", "l4", "m4"];
+  const array3 = [ "b3", "c3", "d3", "e3", "f3", "g3", "h3", "i3", "j3", "k3", "l3", "m3"];
+  const array4 = [ "b4", "c4", "d4", "e4", "f4", "g4", "h4", "i4", "j4", "k4", "l4", "m4"];
   if(array3.length != array4.length)
   {
     alert("Error in reset2 function.");
