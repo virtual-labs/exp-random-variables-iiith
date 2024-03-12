@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+	<link rel="stylesheet" href="./css/valid-rv.css">
+	<link rel="stylesheet" href="./css/main.css">
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<title>
+		Random Variables
+	</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+
+		<div class="columns is-centered">
+			<div class="columns is-centered">
+				<div class="column is-one-quarter v-instruction-title">
+					Tasks
+				</div>
+				<div class="column">
+					<div class="v-tabs">
+						<ul>
+							<li id="Task1" onclick="window.location.href = 'sigma-algebra.html';">
+								<a>
+									Sigma Algebra
+								</a>
+							</li>
+
+							<li id="Task2" onclick="window.location.href = 'inverse-image.html';">
+								<a>
+									Inverse image
+								</a>
+							</li>
+
+							<li id="Task3" class="is-active">
+								<a>
+									Valid RV
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="columns is-centered">
+
+			<div class="column">
+				<div class="v-collapsible-instruction-container v-instruction-container">
+					<div class="v-collapsible is-size-5">Instructions</div>
+					<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+						<ul style="list-style: disc;">
+							<b>Quick theory overview:</b>
+							<ul style="list-style: disc;">
+								<b>Procedure:</b>
+							</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<section id="page1">
+		<div class="columns is-centered">
+			<div class="column is-11-desktop is-12-tablet is-12-mobile">
+				<div class="v-datalist-container components-list">
+					<br>
+					<p> Given a function and a sigma algebra over sample space \(\{W_1,W_2,W_3\}\), determine if the
+						function is a valid random variable.
+					</p>
+					<br>
+				</div>
+			</div>
+		</div>
+
+		<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+			style="margin-top: 2%;">
+			<div class="column is-8-desktop is-12-tablet is-12-mobile">
+				<div class="box-question">
+					<div style="padding-bottom: 20px;">
+						<div style="background-color: lightcyan;padding: 10px; ">
+							Sigma Algebra: \( \{\{\},\{W_1,W_2,W_3\},\{W_1\},\{W_2,W_3\}\}\)
+						</div>
+						<div style="background-color: rgb(228, 252, 233);padding: 10px;">
+							Function: \( f: \Omega \rightarrow \mathbb{R} \) defined as \( f(W_1) = 1, f(W_2) = 2,
+							f(W_3) = 3 \)
+						</div>
+						<div>
+							Is \( f \) a valid random variable?
+						</div>
+					</div>
+					<button id="yes-btn-1" class="v-button" role="button" style="background-color: lightseagreen;"
+						onclick="changeSelect1(1)"> Yes </button>
+					<button id="no-btn-1" class="v-button" role="button" style="background-color: lightcoral;"
+						onclick="changeSelect1(0)"> No </button>
+					<button class="v-button" role="button" onclick="page2()"> Next </button>
+				</div>
+			</div>
+			<div class="column is-3-desktop is-4-tablet is-12-mobile">
+				<div class="v-datalist-container components-list canvas-container">
+					<div class="v-datalist-title">Observations</div>
+					<div>
+						<div id="observations1"></div>
+						<div id="results1"></div>
+						<div class="canvas-container">
+							<canvas id="canvas1"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+	<script src="./js/valid-rv.js"></script>
+</body>
+
+
+</html>

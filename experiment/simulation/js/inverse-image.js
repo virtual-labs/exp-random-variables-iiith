@@ -4,7 +4,8 @@ var W2 = document.getElementById("W2")
 var W3 = document.getElementById("W3")
 var W4 = document.getElementById("W4")
 var C = document.getElementById("c")
-var obsText = document.getElementById("observationText");
+var obsText = document.getElementById("observationText1");
+const chx1 = document.getElementById('myChart1');
 
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -23,11 +24,11 @@ for (i = 0; i < coll.length; i++) {
 
 
 function generateRandomValues(){
-  W1.innerText =  Math.ceil(Math.random()*50 - 25);
-  W2.innerText =  Math.ceil(Math.random()*50 - 25);
-  W3.innerText =  Math.ceil(Math.random()*50 - 25);
-  W4.innerText =  Math.ceil(Math.random()*50 - 25);
-  C.innerText  =  Math.ceil(Math.random()*50 - 25);
+  W1.innerText =  (Math.random()*15 - 7.5).toFixed(2);
+  W2.innerText =  (Math.random()*15 - 7.5).toFixed(2);
+  W3.innerText =  (Math.random()*15 - 7.5).toFixed(2);
+  W4.innerText =  (Math.random()*15 - 7.5).toFixed(2);
+  C.innerText  =  (Math.random()*15 - 7.5).toFixed(2);
   obsText.innerText = "Values have been generated"
 }
 
@@ -49,8 +50,10 @@ function verifyAns(val1, val2, val3, val4){
   str+="}"
   if(flag === 0)
       str = "{ }"
-  if(c==="")
+  if(c===""){
     obsText.innerText = "Option chosen was: "+ str+ ". Please generate the values before choosing the answer"
+    displayChart1(0,0,0,0,0)
+  }
   else{
     var w1 = parseInt(W1.innerText)
     var w2 = parseInt(W2.innerText)
@@ -74,6 +77,8 @@ function verifyAns(val1, val2, val3, val4){
       obsText.innerText = "Option chosen was: "+ str +". Incorrect answer. Please try again"
     else
     obsText.innerText = "Option chosen was: "+ str +". Correct answer. Please proceed ahead"
+
+    displayChart1(2,4,5,6,7)
   }
 }
 
@@ -86,3 +91,83 @@ function resetValues(){
   C.innerText = ""
   obsText.innerText = "Values have been Reset"
 }
+
+function displayChart1(val1, val2, val3, val4, val5){
+  const data = {
+    datasets: [{
+      label: 'mapping of the sample space based on function f',
+      data: [
+        {
+          x: val1,
+          y: 'c'
+        },
+        {
+          x: val2,
+          y: 'w1'
+        },
+        {
+          x: val3,
+          y: 'w2'
+        },
+        {
+          x: val5,
+          y: 'w3'
+        },
+        {
+          x: val5,
+          y: 'w4'
+        }
+      ],
+      backgroundColor: 'rgb(255, 99, 132)'
+    },
+    {
+      label: 'The inverse image of c based on the function f',
+      data: [
+        {
+          x: -8,
+          y: -1 // Using -1 to ensure the shaded area is below the lowest y-axis category
+        },
+        {
+          x: val1,
+          y: -1 // Ensuring consistency with the starting point
+        }
+      ],
+      showLine: true, // Connects the points with a line
+      borderColor: 'rgba(0, 0, 0, 0)', // Makes the border line invisible
+      backgroundColor: 'rgba(0, 255, 0, 0.25)', // Semi-transparent green for the shaded area
+      fill: true, // Fills the area under the line
+      tension: 0 // Disables bezier curves to keep the line straight
+    }]
+  };
+  
+  const config = {
+    type: 'scatter',
+    data: data,
+
+    options: {
+      scales: {
+          x: {
+              type: 'linear',
+              position: 'bottom',
+              min: -8,
+              max: 8,
+              title: {
+                  display: true,
+                  text: 'Values of the mapping'
+              }
+          },
+          y: {
+              type: 'category',
+              labels: ['c', 'w2', 'w3', 'w4', 'w1'],
+              title: {
+                  display: true,
+                  text: 'Categories'
+              }
+          }
+      }, 
+    }
+  };
+  new Chart(chx1, config);
+}
+
+

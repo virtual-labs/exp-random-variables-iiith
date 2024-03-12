@@ -24,7 +24,6 @@
 
 }
 
-
 @media screen and (max-width: 750px) {
   .center {
     text-align: center;
@@ -206,16 +205,17 @@
 .experimentContainer {
   border-radius: 25px;
   margin: 0.5%;
-  flex: 65%;
+  flex: 50%;
+  min-height: 600px;
   border: 2px solid green;
 }
 
 .observationContainer {
   border-radius: 25px;
   margin: 0.5%;
-  flex: 35%;
+  flex: 50%;
   border: 2px solid green;
-  min-height: 450px;
+  min-height: 600px;
   text-align: center;
   font-size: 25px;
 }
@@ -226,28 +226,11 @@
   display: flex;
 }
 
-.submitAndResetButton{
-  background-color: #0ce9e9;
-  color: black;
-  margin-right: 60px;
-  margin-left: 60px;
-  padding: 1.5%;
-  flex: 50%;
-  border-radius: 25px;
-  align-items: center;
-  font-size: 15px;
-}
-
-.submitAndResetButton:hover{
-  background-color: darkblue;
-  color: beige;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  gap: 2px;
-  padding: 5px;
+  gap: 25px;
+  padding: 30px;
   margin-top: 20px;
 }
 
@@ -264,13 +247,14 @@
 .inputContainer {
   display: grid;
   grid-template-columns: auto auto auto auto;
+  padding: 20px;
 }
 
 .valuesContainer {
   border-radius: 25px;
   color: black;
   text-align: center;
-  font-size: 15px;
+  font-size: 20px;
   min-height: 35px;
   margin: 30px;
 }
@@ -284,7 +268,7 @@
 
 .randomNumGenerator{
   margin: 5px;
-  padding-left:30%;
+  padding-left:25%;
 }
 
 #randomNumGeneratorButton{
@@ -304,4 +288,9 @@
 .ans:hover{
   background-color: darkblue;
   color: beige;
+}
+
+.graphContainer{
+  margin: 20px;
+  padding: 20px;
 }
