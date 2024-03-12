@@ -4,6 +4,12 @@ Quantities governed by randomness correspond to functions on the probability spa
 ### Definition 1 _(Random variable)_ :
 A random variable is a function $\mathcal(X) : \Omega \to \mathbb{R}$ with the property that $\{ \omega \in \Omega : \mathcal(X) \leq x \} \in \mathcal{F} $ for each $x \in \mathbb{R}$. such a function is said to be   $\mathcal(F)$-measurable. Random variables map $\Omega$ into $\mathbb{R}$.
 
+
+![alt text](./images/RV1.jpg)
+
+
+![alt text](./images/RV2.jpg)
+
 **_Example 1_**
 A fair coin is tossed twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$, let $\mathcal{X}(\omega)$ be the number of heads seen after the coin has been tossed twice, so $\mathcal{X}(HH) = 2, \mathcal{X}(HT) = \mathcal{X}(TH) = 1, \mathcal{X}(TT) = 0 $.
 
@@ -27,6 +33,8 @@ $$\begin{equation}
     \end{cases}       
 \end{equation} $$
 
+![alt text](./images/PMF1.jpg)
+
 $$\begin{equation}
   F_{\mathcal{W}}(\omega) =
     \begin{cases}
@@ -35,6 +43,8 @@ $$\begin{equation}
       1 & \text{$\omega \geq 4$} 
     \end{cases}       
 \end{equation} $$
+
+![alt text](./images/PMF2.jpg)
 
 The distribution $F$ has the following properties
 - $\lim_{x \to - \infty} F(x) = 0 $, $\lim_{x \to \infty} F(x) = 1$
@@ -55,19 +65,3 @@ Suppose $F$ is a distributive function of $\mathcal{X}$. Then
 Probability is a mathematical model to help us study physical systems in an average sense.
 
 - $\Omega$ is used to denote two objects. It can be used to denote the set of all elementary outcomes of a random event and also the certain event.
-
-![alt text](./images/PMF1.jpg)
-
-
-
-![alt text](./images/PMF2.jpg)
-
-
-
-
-![alt text](./images/RV1.png)
-
-
-
-
-![alt text](./images/RV2.png)
