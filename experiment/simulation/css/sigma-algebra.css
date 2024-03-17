@@ -141,7 +141,10 @@
 /* Srikar's CSS */
 
 .mainContainer {
-  padding: 5%;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   overflow-x: scroll;
 }
 
@@ -149,7 +152,7 @@
   border: 2px solid green;
   padding-left: 3%;
   margin: 1.5%;
-  border-radius: 25px;
+  border-radius: 10px;
   background-color: bisque;
   text-align: center;
 }
@@ -157,7 +160,7 @@
 .instructionsContainer {
   border: 2px solid green;
   margin: 1.5%;
-  border-radius: 25px;
+  border-radius: 10px;
   align-items: center;
   padding: 10px;
 }
@@ -166,13 +169,12 @@
   background-color: #0ce9e9;
   color: black;
   cursor: pointer;
-  border-radius: 25px;
-  padding: 1%;
-  width: 95%;
-  margin: 0.5%;
+  border-radius: 10px;
+  width: 99%;
   text-align: left;
   outline: none;
-  font-size: 25px;
+  font-size: 15px;
+  padding-left: 30px;
 }
 
 .active, .collapsible:hover {
@@ -181,9 +183,10 @@
 }
 
 .content {
-  margin: 0.25%;
-  padding: 30px;
-  font-size: 20px;
+  margin-right: 10px;
+  padding-left: 30px;
+  border-radius: 10px;
+  font-size: 15px;
   display: none;
   overflow: hidden;
   background-color: lightgoldenrodyellow;
@@ -196,32 +199,31 @@
 
 .experimentAndObservationContainer {
   display: flex;
-  border-radius: 25px;
+  border-radius: 10px;
   margin: 1.5%;
   align-items: center;
   overflow-x: scroll;
 }
 
 .experimentContainer {
-  border-radius: 25px;
+  border-radius: 10px;
   margin: 0.5%;
-  flex: 50%;
-  min-height: 600px;
+  flex: 35%;
   border: 2px solid green;
 }
 
 .observationContainer {
-  border-radius: 25px;
+  border-radius: 10px;
   margin: 0.5%;
-  flex: 50%;
+  flex: 65%;
   border: 2px solid green;
-  min-height: 680px;
   text-align: center;
-  font-size: 25px;
+  font-size: 15px;
+  min-height: 375px;
 }
 
 .buttonsContainer{
-  border-radius: 25px;
+  border-radius: 10px;
   margin: 1%;
   display: flex;
 }
@@ -229,58 +231,51 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  gap: 25px;
-  padding: 30px;
-  margin-top: 20px;
+  margin: 10px;
+  row-gap: 10px;
+  column-gap: 5px;
 }
 
 .grid-container > div {
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: beige;
   border: 2px black solid;
   color: black;
   text-align: center;
   padding: 5px;
-  font-size: 20px;
+  font-size: 10px;
 }
 
 .inputContainer {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  padding: 20px;
 }
 
 .valuesContainer {
-  border-radius: 25px;
   color: black;
-  text-align: center;
-  font-size: 20px;
+  text-align: left;
+  font-size: 10px;
   min-height: 35px;
-  margin: 30px;
+  margin: 15px;
 }
 
 .item5{
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
   color: black;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   border-color: black;
-  padding-left: 40px;
-}
-
-.randomNumGenerator{
-  margin: 5px;
-  padding-left:37%;
+  align-items: center;
+  padding: 5px;
 }
 
 #randomNumGeneratorButton{
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: black;
   color: goldenrod;
-  padding: 10px;
-  font-size: 20px;
-  margin: 20px;
+  font-size: 15px;
+  padding: 5px;
 }
 
 #randomNumGeneratorButton:hover{
@@ -291,9 +286,4 @@
 .ans:hover{
   background-color: darkblue;
   color: beige;
-}
-
-.graphContainer{
-  margin: 20px;
-  padding: 20px;
 }

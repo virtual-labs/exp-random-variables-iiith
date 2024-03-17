@@ -96,7 +96,7 @@ document.getElementById('randomNumGeneratorButton').addEventListener('click', fu
   W2.innerText =  (Math.random()*15 - 7.5).toFixed(2);
   W3.innerText =  (Math.random()*15 - 7.5).toFixed(2);
   W4.innerText =  (Math.random()*15 - 7.5).toFixed(2);
-  obsText.innerText = "Values have been generated. \n They are: c = " + numericValue + ", w1 = " + parseFloat(W1.innerText) + ", w2 = " +  parseFloat(W2.innerText) + ", w3 = " +  parseFloat(W3.innerText) + ", w4 = " +  parseFloat(W4.innerText) + "." ;
+  obsText.innerText = "Values have been generated. \n They are: c = " + numericValue + ", f(w1) = " + parseFloat(W1.innerText) + ", f(w2) = " +  parseFloat(W2.innerText) + ", f(w3) = " +  parseFloat(W3.innerText) + ", f(w4) = " +  parseFloat(W4.innerText) + "." ;
 });
 
 // Checks to see if the input is correctly entered (Only numbers including decimals)
@@ -170,33 +170,30 @@ function verifyAns(val1, val2, val3, val4){
     obsText.innerText = "";
     c = numericValue
 
-    obsText.innerText = "Values are: c = " + numericValue + ", w1 = " + w1 + ", w2 = " + w2 + ", w3 = " + w3 + ", w4 = " + w4 + ". \n" ;
+    obsText.innerText = "Values are: c = " + numericValue + ", f(w1) = " + w1 + ", f(w2) = " + w2 + ", f(w3) = " + w3 + ", f(w4) = " + w4 + ". \n" ;
     var ansContainer = [0,0,0,0]
-    
     if(w1 <= c)
       ansContainer[0] = 1
     else{
-      obsText.innerText += " f(w1) > " + c + ', '
+      obsText.innerText += " f(w1) > " + c + ' '
     }
     
     if(w2 <= c)
       ansContainer[1] = 1
     else{
-      obsText.innerText += " f(w2) > " + c + ', '
+      obsText.innerText += " f(w2) > " + c + ' '
     }
     
     if(w3 <= c)
       ansContainer[2] = 1
     else{
-      obsText.innerText += " f(w3) > " + c + ', '
+      obsText.innerText += " f(w3) > " + c + ' '
     }
     
     if(w4 <= c)
       ansContainer[3] = 1
     else
-      obsText.innerText += " f(w4) > " + c + '. '
-    
-    obsText.innerText += "\n"
+      obsText.innerText += " f(w4) > " + c + ' '
     flag = 0;
     
     for(let i = 0; i < 4; i++)
@@ -204,11 +201,11 @@ function verifyAns(val1, val2, val3, val4){
         flag = 1;
     
     if(flag == 1){
-      obsText.innerText += " Option chosen was: "+ str +".\n Incorrect answer. :( Please try again!!"
+      obsText.innerText += " Option chosen was: "+ str +", which is the incorrect answer. :( Please try again!!"
       chx1.style.display = "none";
     }
     else{
-      obsText.innerText += " Option chosen was: "+ str +".\n Correct answer. :) Please proceed ahead."
+      obsText.innerText += " Option chosen was: "+ str +", which is the correct answer. :) Please proceed ahead."
       chx1.style.display = "block";
       displayChart1(w1,w2,w3,w4,c)
     }
@@ -238,23 +235,23 @@ function displayChart1(val1, val2, val3, val4, val5){
         },
         {
           x: val1,
-          y: 'w1'
+          y: 'f(w1)'
         },
         {
           x: val2,
-          y: 'w2'
+          y: 'f(w2)'
         },
         {
           x: val3,
-          y: 'w3'
+          y: 'f(w3)'
         },
         {
           x: val4,
-          y: 'w4'
+          y: 'f(w4)'
         }
       ],
       backgroundColor: 'rgb(255, 99, 132)',
-      pointRadius: 10 
+      pointRadius: 5 
     },
     {
       label: 'The inverse image of c based on the function f',

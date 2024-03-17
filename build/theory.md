@@ -33,6 +33,8 @@ $$\begin{equation}
     \end{cases}       
 \end{equation} $$
 
+![alt text](./images/PMF1.jpg)
+
 $$\begin{equation}
   F_{\mathcal{W}}(\omega) =
     \begin{cases}
@@ -41,8 +43,6 @@ $$\begin{equation}
       1 & \text{$\omega \geq 4$} 
     \end{cases}       
 \end{equation} $$
-
-![alt text](./images/PMF1.jpg)
 
 ![alt text](./images/PMF2.jpg)
 
