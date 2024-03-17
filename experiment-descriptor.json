@@ -12,16 +12,16 @@
       "target": "index.html"
     },
     {
-      "target": "theory.html",
-      "source": "theory.md",
-      "label": "Theory",
+      "target": "prelims.html",
+      "source": "prelims.md",
+      "label": "Prelims",
       "unit-type": "task",
       "content-type": "text"
     },
     {
-      "target": "prelims.html",
-      "source": "prelims.md",
-      "label": "Prelims",
+      "target": "theory.html",
+      "source": "theory.md",
+      "label": "Theory",
       "unit-type": "task",
       "content-type": "text"
     },
