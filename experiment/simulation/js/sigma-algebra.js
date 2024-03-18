@@ -149,7 +149,7 @@ function choosenId(ids) {
   return choosedIds;
 }
 function checkSoln(collGiven, idGiven) {
-  var coll = collGiven.slice();
+  var coll = [];
   var ids = idGiven;
   var choosedIds = choosenId(ids);
 
@@ -159,6 +159,7 @@ function checkSoln(collGiven, idGiven) {
     var set = idToSet[id[0]];
     coll.push(set);
   }
+  coll = [...coll, ...collGiven]
   // check if the collection is a sigma algebra
   var res = isSigmaAlgebra(coll, sampleSpace);
   return res;
