@@ -47,138 +47,126 @@
 			</div>
 		</div>
 	</div>
-	<!-- First part of the experiment -->
-	<section id="invImagepg1">
-		<div class ="mainContainer">
-			<div class = "instructionsContainer">
-				<div>
-					<p style= "text-align: left; font-size: 15px; margin-left: 20px;">
-						<u>Instructions for the experiment:</u>
-				</div>
-				<button type="button" class= "collapsible">
-					Quick theory overview:
-				</button>
-				<div class="content">
-  					<ol>
-						For a given constant \(c\), the inverse image of \(c\) is defined as $$
-						\mathcal{f}^{-1}(c) = \{ \omega_i : \mathcal{f}(\omega_i) \leq c\}$$
-					</ol>
-				</div>
-				<button type="button" class="collapsible">
-					Procedure:
-				</button>
-				<div class="content">
-					<ol>
+	<div class ="mainContainer">
+		<div class="v-collapsible-instruction-container v-instruction-container">
+			<div class="v-collapsible is-size-5">Instructions</div>
+				<div class="v-content" style="text-align: left;">
+					<ul style="list-style: disc;">
+						<b>Quick theory overview:</b>
+						<li>
+							For a given constant \(c\), the inverse image of \(c\) is defined as $$\mathcal{f}^{-1}(c) = \{ \omega_i : \mathcal{f}(\omega_i) \leq c\}$$
+						</li>
+					</ul>
+					<br>
+					<ul style="list-style: disc;">
+						<b>Procedure:</b>
 						<li> Given: A function \(\mathcal{f}\), a sample space \(\Omega\), and a variable \(c\)</li>
 						<li> Populate the function \(\mathcal{f}\) and the variable \(c\) using the generate button given below </li>
 						<li> The generate button will give a random mapping for the function \(\mathcal{f}\) with values ranging from \(-7.5\) to \(7.5\) </li>
 						<li> Please select the subset of \( \Omega \) which is the inverse image of the generated function \(\mathcal{f}\) </li>
-					</ol>
-				</div>
-			</div>
-
-			<div class="questionContainer">
-				<p style= "text-align: left; font-size: 15px; font-weight: bold;">
-					<u> Question:</u>
-				</p>
-				<p style= "text-align: center; font-size: 15px; padding: 10px;">
-					Given a sample space \( \Omega = \{\omega_1, \omega_2, \omega_3, \omega_4\}\) and a function from \(\mathcal{f}: \Omega \to \mathbb{R}\). Find the inverse image for the function \(\mathcal{f}\) based on the value \(c\) that was randomly generated:
-				</p>
-			</div>
-			<div class="experimentAndObservationContainer">
-				<div class="experimentContainer">
-					<div class="inputContainer">
-						<div class="item5">
-							<form id="myForm">
-								Please enter a value for \(c\) :
-								<input type="number" id="myNumberInput" value="0" onkeypress= "return isNumberKey(event)" /><br>
-							</form>
-						</div>
-						<div class="valuesContainer">
-							\(\mathcal{f}(\omega_1)\) = <type="number" class="inputNumber" id="W1"></type>
-						</div>
-						<div class="valuesContainer">
-							\(\mathcal{f}(\omega_2)\) = <type="number" class="inputNumber" id="W2"></type>
-						</div>
-						<div class="valuesContainer">
-							\(\mathcal{f}(\omega_3)\) = <type="number" class="inputNumber" id="W3"></type>
-						</div>  
-						<div class="valuesContainer">
-							\(\mathcal{f}(\omega_4)\) = <type="number" class="inputNumber" id="W4"></type>
-						</div>
-						<div class="item5">
-							<button type="button" id="randomNumGeneratorButton">Generate</button>
-						</div>
-						
-					</div>
-					<div class="grid-container">
-						<div class="ans" id ="ans1" onclick="verifyAns(0,0,0,0)">
-							\(\phi\)
-						</div>
-						<div class="ans" id ="ans2"  onclick="verifyAns(1,0,0,0)">
-							 \(\{\omega_1\}\)
-						</div>
-						<div class="ans" id ="ans3" onclick="verifyAns(0,1,0,0)">
-							\(\{\omega_2\}\)
-						</div>
-						<div class="ans" id ="ans4" onclick="verifyAns(0,0,1,0)">
-							\(\{\omega_3\}\)
-						</div>
-						<div class="ans" id ="ans5" onclick="verifyAns(0,0,0,1)">
-							\(\{\omega_4\}\)
-						</div>
-						<div class="ans" id ="ans6" onclick="verifyAns(1,1,0,0)">
-							\(\{\omega_1, \omega_2\}\)
-						</div>
-						<div class="ans" id ="ans7" onclick="verifyAns(1,0,1,0)">
-							\(\{\omega_1, \omega_3\}\)
-						</div>
-						<div class="ans" id ="ans8" onclick="verifyAns(1,0,0,1)">
-							\(\{\omega_1, \omega_4\}\)
-						</div>
-						<div class="ans" id ="ans9" onclick="verifyAns(0,1,1,0)">
-							\(\{\omega_2, \omega_3\}\)
-						</div>
-						<div class="ans" id ="ans10" onclick="verifyAns(0,1,0,1)">
-							\(\{\omega_2, \omega_4\}\)
-						</div>
-						<div class="ans" id ="ans11" onclick="verifyAns(0,0,1,1)">
-							\(\{\omega_3, \omega_4\}\)
-						</div>
-						<div class="ans" id ="ans12" onclick="verifyAns(1,1,1,0)">
-							\(\{\omega_1, \omega_2, \omega_3\}\)
-						</div>
-						<div class="ans" id ="ans13" onclick="verifyAns(1,1,0,1)">
-							\(\{\omega_1, \omega_2, \omega_4\}\)
-						</div>
-						<div class="ans" id ="ans14" onclick="verifyAns(1,0,1,1)">
-							\(\{\omega_1, \omega_3, \omega_4\}\)
-						</div>
-						<div class="ans" id ="ans15" onclick="verifyAns(0,1,1,1)">
-							\(\{\omega_2, \omega_3, \omega_4\}\)
-						</div>
-						<div class="ans" id ="ans16" onclick="verifyAns(1,1,1,1)">
-							\(\{\omega_1, \omega_2, \omega_3, \omega_4\}\)
-						</div>
-					</div>				
-
-					<div class = "item5">
-						<button id = "randomNumGeneratorButton" onclick="resetValues()">
-							Reset 
-						</button>
-					</div>
-				</div>
-				<div class="observationContainer">
-					<u> Observations </u>
-					<p id="observationText1"> Please generate the values using the "Generate" button
-
-					<div class = "graphContainer">
-						<canvas id="myChart1"></canvas>
-					</div>
+					</ul>
 				</div>
 			</div>
 		</div>
-	</section>
+		<div class="questionContainer">
+			<p style= "text-align: left; font-size: 15px; font-weight: bold;">
+				<u> Question:</u>
+			</p>
+			<p style= "text-align: center; font-size: 15px; padding: 10px;">
+				Given a sample space \( \Omega = \{\omega_1, \omega_2, \omega_3, \omega_4\}\) and a function from \(\mathcal{f}: \Omega \to \mathbb{R}\). Find the inverse image for the function \(\mathcal{f}\) based on the value \(c\) that was randomly generated:
+			</p>
+		</div>
+		<div class="experimentAndObservationContainer">
+			<div class="experimentContainer">
+				<div class="inputContainer">
+					<div class="item5">
+						<form id="myForm">
+							Please enter a value for \(c\) :
+							<input type="number" id="myNumberInput" value="0" onkeypress= "return isNumberKey(event)" /><br>
+						</form>
+					</div>
+					<div class="valuesContainer">
+						\(\mathcal{f}(\omega_1)\) = <type="number" class="inputNumber" id="W1"></type>
+					</div>
+					<div class="valuesContainer">
+						\(\mathcal{f}(\omega_2)\) = <type="number" class="inputNumber" id="W2"></type>
+					</div>
+					<div class="valuesContainer">
+						\(\mathcal{f}(\omega_3)\) = <type="number" class="inputNumber" id="W3"></type>
+					</div>  
+					<div class="valuesContainer">
+						\(\mathcal{f}(\omega_4)\) = <type="number" class="inputNumber" id="W4"></type>
+					</div>
+					<div class="item5">
+						<button type="button" id="randomNumGeneratorButton">Generate</button>
+					</div>
+				</div>
+				<div class="grid-container">
+					<div class="ans" id ="ans1" onclick="verifyAns(0,0,0,0)">
+						\(\phi\)
+					</div>
+					<div class="ans" id ="ans2"  onclick="verifyAns(1,0,0,0)">
+						 \(\{\omega_1\}\)
+					</div>
+					<div class="ans" id ="ans3" onclick="verifyAns(0,1,0,0)">
+						\(\{\omega_2\}\)
+					</div>
+					<div class="ans" id ="ans4" onclick="verifyAns(0,0,1,0)">
+						\(\{\omega_3\}\)
+					</div>
+					<div class="ans" id ="ans5" onclick="verifyAns(0,0,0,1)">
+						\(\{\omega_4\}\)
+					</div>
+					<div class="ans" id ="ans6" onclick="verifyAns(1,1,0,0)">
+						\(\{\omega_1, \omega_2\}\)
+					</div>
+					<div class="ans" id ="ans7" onclick="verifyAns(1,0,1,0)">
+						\(\{\omega_1, \omega_3\}\)
+					</div>
+					<div class="ans" id ="ans8" onclick="verifyAns(1,0,0,1)">
+						\(\{\omega_1, \omega_4\}\)
+					</div>
+					<div class="ans" id ="ans9" onclick="verifyAns(0,1,1,0)">
+						\(\{\omega_2, \omega_3\}\)
+					</div>
+					<div class="ans" id ="ans10" onclick="verifyAns(0,1,0,1)">
+						\(\{\omega_2, \omega_4\}\)
+					</div>
+					<div class="ans" id ="ans11" onclick="verifyAns(0,0,1,1)">
+						\(\{\omega_3, \omega_4\}\)
+					</div>
+					<div class="ans" id ="ans12" onclick="verifyAns(1,1,1,0)">
+						\(\{\omega_1, \omega_2, \omega_3\}\)
+					</div>
+					<div class="ans" id ="ans13" onclick="verifyAns(1,1,0,1)">
+						\(\{\omega_1, \omega_2, \omega_4\}\)
+					</div>
+					<div class="ans" id ="ans14" onclick="verifyAns(1,0,1,1)">
+						\(\{\omega_1, \omega_3, \omega_4\}\)
+					</div>
+					<div class="ans" id ="ans15" onclick="verifyAns(0,1,1,1)">
+						\(\{\omega_2, \omega_3, \omega_4\}\)
+					</div>
+					<div class="ans" id ="ans16" onclick="verifyAns(1,1,1,1)">
+						\(\{\omega_1, \omega_2, \omega_3, \omega_4\}\)
+					</div>
+				</div>				
+				<div class = "item5">
+					<button id = "randomNumGeneratorButton" onclick="resetValues()">
+						Reset 
+					</button>
+				</div>
+			</div>
+			<div class="observationContainer">
+				<u> Observations </u>
+				<p id="observationText1"> 
+					Please generate the values using the "Generate" button
+				<div class = "graphContainer">
+				<canvas id="myChart1"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
 	<script src="./js/inverse-image.js"></script>
 </body>

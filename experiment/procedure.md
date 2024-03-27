@@ -17,7 +17,6 @@ In the first example:
 
 - In the observation section the result will be displayed.
 
-
 In the second example:
 - There is an incomplete collection of sets for which one must choose the appropriate sets (more than or equal to 1) to be added to the collection which ensures that the collection is the smallest possible sigma algebra.
 

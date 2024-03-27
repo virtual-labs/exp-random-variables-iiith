@@ -4,8 +4,6 @@ var W3 = document.getElementById("W3")
 var W4 = document.getElementById("W4")
 var obsText = document.getElementById("observationText1");
 const chx1 = document.getElementById('myChart1');
-var coll = document.getElementsByClassName("collapsible");
-var i;
 var numericValue;
 
 // Create a dummy graph to display
@@ -20,19 +18,19 @@ var data = {
       },
       {
         x: 0,
-        y: 'w1'
+        y: 'f(w1)'
       },
       {
         x: 0,
-        y: 'w2'
+        y: 'f(w2)'
       },
       {
         x: 0,
-        y: 'w3'
+        y: 'f(w3)'
       },
       {
         x: 0,
-        y: 'w4'
+        y: 'f(w4)'
       }
     ],
     backgroundColor: 'rgb(255, 99, 132)',
@@ -75,7 +73,7 @@ var config = {
         },
         y: {
             type: 'category',
-            labels: ['c', 'w1', 'w2', 'w3', 'w4', ""],
+            labels: ['c', 'f(w1)', 'f(w2)', 'f(w3)', 'f(w4)', ""],
             title: {
                 display: true,
                 text: 'Variables'
@@ -119,19 +117,6 @@ function isNumberKey(evt) {
       return false;
   }
   return true;
-}
-
-// For the collapsible intructions menu
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
 }
 
 function verifyAns(val1, val2, val3, val4){
@@ -289,7 +274,7 @@ function displayChart1(val1, val2, val3, val4, val5){
             },
             y: {
                 type: 'category',
-                labels: ['c', 'w1', 'w2', 'w3', 'w4', ""],
+                labels: ['c', 'f(w1)', 'f(w2)', 'f(w3)', 'f(w4)', ""],
                 title: {
                     display: true,
                     text: 'Variables'
