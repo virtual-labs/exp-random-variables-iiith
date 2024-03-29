@@ -36,7 +36,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "3. For a sample space $\\Omega = \\{w_1,w_2, w_3\\}$, and a random variable $\\mathcal{X}$ such that $\\mathcal{X}(w_1) = -2.5 $, $\\mathcal{X}(w_2) = 3 $ and inverse images $\\mathcal{X}^{-1}(3.5) = \\{w_1, w_2, w_3\\}$ and $\\mathcal{X}^{-1}(0) = \\{ w_1\\}$, what can be the range for the value of $mathcal{X}(w_3) $ ?",
+      "question": "3. For a sample space $\\Omega = \\{w_1,w_2, w_3\\}$, and a random variable $X$ such that $X(w_1) = -2.5 $, $X(w_2) = 3 $ and inverse images $X^{-1}(3.5) = \\{w_1, w_2, w_3\\}$ and $X^{-1}(0) = \\{ w_1\\}$, what can be the range for the value of $mathcal{X}(w_3) $ ?",
       "answers": {
       "a": "$-\\infty$ to $0$" ,
       "b": "$-\\infty$ to $-2.5$",
@@ -44,8 +44,8 @@
       "d": "None of the above"
       },
       "explanations": {
-      "a": "Since $\\mathcal{X}^{-1}(0) = { w_1}$, the value should be more than $0$",
-      "b": "Since $\\mathcal{X}^{-1}(0) = { w_1}$, the value should be more than $-2.5$",
+      "a": "Since $X^{-1}(0) = { w_1}$, the value should be more than $0$",
+      "b": "Since $X^{-1}(0) = { w_1}$, the value should be more than $-2.5$",
       "c": "Correct answer",
       "d": "Cannot be none of the above"
       },
@@ -55,16 +55,16 @@
     {
       "question": "4. Given a $\\Omega = \\{1, 2, 3, 4\\}$ and $\\mathcal{F} = \\{ \\phi, \\Omega, \\{1\\}, \\{2\\}, \\{1,2\\}, \\{3,4\\}, \\{1,3,4\\}, \\{2,3,4\\}\\}$ which of the following is a valid random variable mapping",
       "answers": {
-      "a": " $ \\mathcal{X}(1) = 1, \\mathcal{X}(2) = 2, \\mathcal{X}(3) = 3, \\mathcal{X}(4) = 4  $ ",
-      "b": " $ \\mathcal{X}(1) = 1, \\mathcal{X}(2) = 2, \\mathcal{X}(3) = 3, \\mathcal{X}(4) = 3  $ ",
-      "c": " $ \\mathcal{X}(1) = 5, \\mathcal{X}(2) = 4, \\mathcal{X}(3) = 1, \\mathcal{X}(4) = 0  $ " ,
-      "d": " $ \\mathcal{X}(1) = 6, \\mathcal{X}(2) = 1, \\mathcal{X}(3) = 2, \\mathcal{X}(4) = 8  $ "
+      "a": " $ X(1) = 1, X(2) = 2, X(3) = 3, X(4) = 4  $ ",
+      "b": " $ X(1) = 1, X(2) = 2, X(3) = 3, X(4) = 3  $ ",
+      "c": " $ X(1) = 5, X(2) = 4, X(3) = 1, X(4) = 0  $ " ,
+      "d": " $ X(1) = 6, X(2) = 1, X(3) = 2, X(4) = 8  $ "
       },
       "explanations": {
-      "a": "$\\mathcal{X}(^{-1}(3) = \\{ 1,2,3\\} $ is not present in the $\\mathcal{F}$",
+      "a": "$X^{-1}(3) = \\{ 1,2,3\\} $ is not present in the $\\mathcal{F}$",
       "b": "Correct answer",
-      "c": "$\\mathcal{X}(^{-1}(0) = \\{ 4\\} $ is not present in the $\\mathcal{F}$",
-      "d": "$\\mathcal{X}(^{-1}(6) = \\{ 1,2,3\\} $ is not present in the $\\mathcal{F}$"
+      "c": "$X^{-1}(0) = \\{ 4\\} $ is not present in the $\\mathcal{F}$",
+      "d": "$X^{-1}(6) = \\{ 1,2,3\\} $ is not present in the $\\mathcal{F}$"
       },
       "correctAnswer": "b",
       "difficulty": "hard"

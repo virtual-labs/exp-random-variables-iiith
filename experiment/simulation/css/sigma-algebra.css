@@ -261,4 +261,13 @@
 
 .graphContainer{
   height: 250px;
+  align-items: center;
+}
+
+#myChart1{
+  align-items: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
