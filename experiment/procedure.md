@@ -6,25 +6,15 @@ In the experiment section there are 3 sub experiment which enhance the students 
 
 In this subexperiment there are 2 examples which help build the students understanding of sigma algebra with the help of the definition that is available in the theory section
 
-In the first example:
-- There is an incomplete collection of sets for which one must choose the appropriate set to be added to the collection which ensures that the collection is the smallest possible sigma algebra.
-
-- The user must select the set from the pink tile displayed below. Once a selection has been made, a blue tile appears below which marks the anwer chosen by the user.
-
-- Once a particular pink tile is chosen and then the user wishes to change the answer, the user can then proceed to click on the blue tile and reselect another pink tile.
-
-- Upon selection of the tile the user must click on the submit button to check if the selected tile is the correct set that completed the collection.
-
-- In the observation section the result will be displayed.
-
-In the second example:
 - There is an incomplete collection of sets for which one must choose the appropriate sets (more than or equal to 1) to be added to the collection which ensures that the collection is the smallest possible sigma algebra.
 
-- The user must select the sets from the pink tiles displayed below. Once a selection has been made, a blue tile appears below which marks the anwer chosen by the user.
+- The user must select the sets from the pink tile displayed below. Once a selection has been made, a blue tile appears below which marks the anwer chosen by the user.
 
 - Once a particular pink tile is chosen and then the user wishes to change the answer, the user can then proceed to click on the blue tile and reselect another pink tile.
 
-- Upon selection of the required number of tiles the user must click on the submit button to check if the selected tiles completes the collection.
+- Upon selection of the required number of tiles, the user must click on the submit button to check if the selected tiles make the collection a sigma algebra.
+
+- The user is only allowed to choose a predetermined number of minimum tiled for each individual example. (For example only 1 tile can be selected for the first example)
 
 - In the observation section the result will be displayed.
 
