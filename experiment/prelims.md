@@ -19,7 +19,7 @@ $E^{C} = \{ x : x \in \Omega \text{ and } x \notin E\}$, where $\Omega = $ Unive
 ### Definition 4 *(Difference of two sets)* :
 _The difference of two sets $E \; \& \; F$ is the set of all elements that are in $E$ but not in $F$. It is denoted by $E - F$ or $E \backslash F$._
 
-$E \backslash F = \{ x : x \in \Omega \text{ and } x \notin F\}$ 
+$E \backslash F = \{ x : x \in E \text{ and } x \notin F\}$ 
 
 ### Definition 5 *(Exclusive-or of two sets)* : 
 _The Exclusive-or of two sets $E \; \& \; F$ is the set of all elements that are either in $E$ or in $F$ but not in both. It is defined as_
@@ -40,7 +40,7 @@ _For any two sets $E \; \& \; F$,_
 _Given any set $E$, an $n-$partition of a $E$ consists of a sequence of sets_ $E_i$, $i$ = 1, 2, 3, $\cdots$, n _such that_
 $$
 \begin{align*}
-E_i \subseteq E , \; \bigcup_{i=1}^{n} E_i = E, \; \& \; E_i \cap E_j = \phi, \; \forall i \neq j
+\bigcup_{i=1}^{n} E_i = E, \; \& \; E_i \cap E_j = \phi, \; \forall i \neq j
 \end{align*}
 $$ 
 
@@ -54,6 +54,25 @@ $$
 
 ### Definition 9 *(Disjoint sets)* :
 _Two sets $E \; \& \; F$ are said to be disjoint if $E \cap F = \phi$._
+
+
+### Definition 10 *(Subset of a set)* :
+
+A set $A$ is called a subset of a set $B$, denoted $A \subseteq B$, if every element of $A$ is also an element of $B$. Formally, this can be written as:
+
+$$
+A \subseteq B \iff \forall x (x \in A \rightarrow x \in B)
+$$
+
+where $\forall$ denotes "for all" and $\rightarrow$ denotes "implies".
+
+If $A$ is a subset of $B$ but $A$ is not equal to $B$, then $A$ is called a proper subset of $B$, denoted $A \subset B$. This can be formally written as:
+
+$$
+A \subset B \iff (A \subseteq B \wedge A \neq B)
+$$
+
+where $\wedge$ denotes "and".
 
 # Probability :
 Probability theory is a mathematical framework that allows us to describe and analyze a random experiment whose outcomes we cannot predict with certainity. It helps us to predict how likely or unlikely an event of interest will occur. Let $A$ be an event, and the chance of $A$ occuring is $p$. The occurrence or non occurence of $A$ depends upon a chain of circumstances involved. This chain is called an experiment of trial. The result of the experiment is called its outcome.
@@ -79,13 +98,13 @@ All the subsets of $\Omega$ need not be events.
 
 ### Definition 2 _(Field / Sigma Algebra)_ :
 A collection of events, as a subcollection $\mathcal{F}$ of the set of all subsets of $\Omega$, which satisfy the following properties
-1. If $A \; \& \; B \in \mathcal{F}$, then $A \cup B \in \mathcal{F}
+1. If $A \; \& \; B \in \mathcal{F}$, then $A \cup B \in \mathcal{F}$
 2. If $A \in \mathcal{F}$, then $A^{C} \in \mathcal{F}$
 3. $\phi \in \mathcal{F}$ 
 
 is called as a Field. From the definition of a Field, if $A_i, A_2, \cdots, A_n \in \mathcal{F}$, then $\bigcup_{i=1}^{n}A_i \in \mathcal{F}$. $\mathcal{F}$ is closed under finite unions and finite intersections also.
 
-When $\Omega$ is infinite, we define $\sigma$- field $\mathcal{F}$ by modifiying (1) as
+When $\Omega$ is infinite, we define $\sigma$- field or $\sigma$-algebra $\mathcal{F}$ by modifiying (1) as
 - If $A_1, A_2, \cdots \in \mathcal{F}$, then $\bigcup_{i=1}^{\infty}A_i \in \mathcal{F}$
 
 Every experiment is associated with a pair $(\Omega, \mathcal{F} )$. We call $A$  to be an event of the experiment if $A \in \mathcal{F}$
@@ -113,7 +132,7 @@ where $p \in [0,1]$. If p = 0.5, then we can say that the coin is fair.
 
 ### Important properties of a typical probability space :
 - $\mathbb{P}(A^{C}) = 1- \mathbb{P}(A)$
-- If $B \subseteq A $, then $\mathbb{P}(B) = \mathbb{P}(A) + \mathbb{P}(B|A) \geq  \mathbb{P}(A)$
+- If $A \subseteq B $, then $\mathbb{P}(B) = \mathbb{P}(A) + \mathbb{P}(B|A) \geq  \mathbb{P}(A)$
 - $\mathbb{P}(A \cup B) =\mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B) $
 - More generally, if $A_1, A_2, \cdots, A_n$ are events, then 
 
@@ -125,20 +144,7 @@ $$, where, for Example, $\sum_{i<j}$ sums over all unordered pairs $(i,j)$ with 
 
 An event $A$ is called null event if $\mathbb{P}(A) = 0$, and if $\mathbb{P}(A) = 1$, we say that the event A occurs almost surely. Null events should not be confused with the impossible event $\phi$. Impossible event is null, but null events need not be impossible.
 
-### Conditional probability :
-An experiment is repeated $N$ times, and on each occasion we observe the occurrences (or non occurrences) of two events $A$ and $B$. We observe that the probabilty that $A$ occurs given $B$ occurs should be reasonably defined as 
-$$\begin{align*}
-\frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
-\end{align*}
-$$ 
 
-Probabilistic intuition also leads to the same conclusion. Given that event $B$ occurs, if it is the case that event $A$ occurs if and only $\mathbb{P}(A \cap B)$ occurs. The conditional probability of $A$ given $B$ should be proportional to $\mathbb{P}(A \cap B)$.
-
-- $\mathbb{P}(A|B)  = \alpha \mathbb{P} (A \cap B)  $ for some const $\alpha$
-- The conditional property of $\Omega$ given $B$ must be equal to $1$
-- Thus $\alpha \mathbb{P} (\Omega \cap B) = 1$
-- $\Rightarrow \alpha \mathbb{P} (B) = 1$
-- $\Rightarrow \alpha = \frac{1}{\mathbb{P} (B)} $
 
 ### Definition 4 _(Conditional Probability)_ :
 If $\mathbb{P}(B) > 0$, then the conditional probability that $A$ occurs given that $B$ occurs is defined as
@@ -149,7 +155,7 @@ $$
 $$
 
 ## Independence
-In general, the occurence of some event $B$ changes the probability that another event $A$ occurs. Where the original probability $\mathbb{P}(A)$ being replaced by $\mathbb{P}(A|B)$. If the original probability remains unchanged, then we say that the two events $A \; \& \; B$ are independent. 
+In general, the occurence of some event $B$ changes the probability that another event $A$ occurs, where the original probability $\mathbb{P}(A)$ being replaced by $\mathbb{P}(A|B)$. If the original probability remains unchanged, then we say that the two events $A \; \& \; B$ are independent. 
 
 $$
 \begin{align*}
@@ -161,11 +167,11 @@ $$
 Events $A \; \& \; B$ are called independent events if $\mathbb{P}(A \cap B) =  \mathbb{P}(A) * \mathbb{P}(B)$. More generally, a family of events defined as $\{A_i : i \in I\}$ are independent if 
 $$
 \begin{align*}
-\mathbb{P}(\bigcap_{i \in J}^{}) = \prod_{i \in J} \mathbb{P}(A_i)
+\mathbb{P}(\bigcap_{i \in J}^{}A_i) = \prod_{i \in J} \mathbb{P}(A_i),
 \end{align*}
-$$, for all finite subsets $J$ of $I$.
+$$ for all finite subsets $J$ of $I$.
 
-Common mistake : If $A \; \& \; B$ are independent, then we assume that $A \cap B = \phi$. This is the case when $A \; \& \; B$ are mutually independent not when $A \; \& \; B$ are independent.
+Common mistake : If $A \; \& \; B$ are independent, then we may assume that $A \cap B = \phi$. This is the case when $A \; \& \; B$ are  disjoint not when $A \; \& \; B$ are independent.
 
 If the family of events $\{A_i : i \in I\}$ has the property that $\mathbb{P}( A_i\cap A_j) = \mathbb{P}(A_i) * \mathbb{P}(A_j) \forall i \neq j$ then it is called pairwaise independent set of events. Let $C$ be an event with $\mathbb{P}(C) > 0$, then the two events $A \; \& \; B$ are called conditionally independent given $C$ if 
 
@@ -174,9 +180,6 @@ $$
 \mathbb{P}(A \cap B|C) =\mathbb{P}(A|C) * \mathbb{P}(B|C)
 \end{align*}
 $$
-
-## Completeness
-Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space. Any event $A$ which has zero probability, that is $\mathbb{P}(A) = 0$, is called a null event. It may seem reasonable that any subset $B \subseteq A$ will itself be null, but this may be without meaning since $B$ may not be an event, this $\mathbb{P}(B)$ may not be defined.
 
 ### Definition _(Complete Space)_ :
 A probability space $(\Omega, \mathcal{F}, \mathbb{P})$ is called a complete space if all subsets of null sets are events.
