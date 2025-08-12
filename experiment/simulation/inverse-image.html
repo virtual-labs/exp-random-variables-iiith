@@ -1,173 +1,107 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
-	<link rel="stylesheet" href="./css/sigma-algebra.css">
-	<link rel="stylesheet" href="./css/main.css">
-	<script type="text/javascript" id="MathJax-script" async
-		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-	<title>
-		Random Variables
-	</title>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <!-- FIX: Linking to the new, dedicated CSS file -->
+    <link rel="stylesheet" href="./css/inverse-image.css">
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Inverse Image</title>
 </head>
-
 <body>
-	<div class="container">
-		<div class="columns is-centered">
-			<div class="columns is-centered">
-				<div class="column is-one-quarter v-instruction-title">
-					Tasks
-				</div>
-				<div class="column">
-					<div class="v-tabs">
-						<ul>
-							<li id="Task1" onclick="window.location.href = 'sigma-algebra.html';">
-								<a>
-									Sigma Algebra
-								</a>
-							</li>
-							<li id="Task2" class="is-active" >
-								<a>
-									Inverse image
-								</a>
-							</li>
-							<li id="Task3" onclick="window.location.href = 'valid-rv.html';">
-								<a>
-									Valid RV
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class ="mainContainer">
-		<div class="v-collapsible-instruction-container v-instruction-container">
-			<div class="v-collapsible is-size-5">Instructions</div>
-				<div class="v-content" style="text-align: left;">
-					<ul style="list-style: disc;">
-						<b>Quick theory overview:</b>
-						<li>
-							For a given constant \(c\), the inverse image of \(c\) is defined as $$\mathcal{f}^{-1}(c) = \{ \omega_i : \mathcal{f}(\omega_i) \leq c\}$$
-						</li>
-					</ul>
-					<br>
-					<ul style="list-style: disc;">
-						<b>Procedure:</b>
-						<li> Given: A function \(\mathcal{f}\), a sample space \(\Omega\), and a variable \(c\)</li>
-						<li> Populate the function \(\mathcal{f}\) and the variable \(c\) using the generate button given below </li>
-						<li> The generate button will give a random mapping for the function \(\mathcal{f}\) with values ranging from \(-7.5\) to \(7.5\) </li>
-						<li> Please select the subset of \( \Omega \) which is the inverse image of the generated function \(\mathcal{f}\) </li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="questionContainer">
-			<p style= "text-align: left; font-size: 15px; font-weight: bold;">
-				<u> Question:</u>
-			</p>
-			<p style= "text-align: center; font-size: 15px; padding: 10px;">
-				Given a sample space \( \Omega = \{\omega_1, \omega_2, \omega_3, \omega_4\}\) and a function from \(\mathcal{f}: \Omega \to \mathbb{R}\). Find the inverse image for the function \(\mathcal{f}\) based on the value \(c\) that was randomly generated:
-			</p>
-		</div>
-		<div class="experimentAndObservationContainer">
-			<div class="experimentContainer">
-				<div class="inputContainer">
-					<div class="item5">
-						<form id="myForm">
-							Please enter a value for \(c\) :
-							<input type="number" id="myNumberInput" value="0" onkeypress= "return isNumberKey(event)" /><br>
-						</form>
-					</div>
-					<div class="valuesContainer">
-						\(\mathcal{f}(\omega_1)\) = <type="number" class="inputNumber" id="W1"></type>
-					</div>
-					<div class="valuesContainer">
-						\(\mathcal{f}(\omega_2)\) = <type="number" class="inputNumber" id="W2"></type>
-					</div>
-					<div class="valuesContainer">
-						\(\mathcal{f}(\omega_3)\) = <type="number" class="inputNumber" id="W3"></type>
-					</div>  
-					<div class="valuesContainer">
-						\(\mathcal{f}(\omega_4)\) = <type="number" class="inputNumber" id="W4"></type>
-					</div>
-					<div class="item5">
-						<button type="button" id="randomNumGeneratorButton">Generate</button>
-					</div>
-				</div>
-				<div class="grid-container">
-					<div class="ans" id ="ans1" onclick="verifyAns(0,0,0,0)">
-						\(\phi\)
-					</div>
-					<div class="ans" id ="ans2"  onclick="verifyAns(1,0,0,0)">
-						 \(\{\omega_1\}\)
-					</div>
-					<div class="ans" id ="ans3" onclick="verifyAns(0,1,0,0)">
-						\(\{\omega_2\}\)
-					</div>
-					<div class="ans" id ="ans4" onclick="verifyAns(0,0,1,0)">
-						\(\{\omega_3\}\)
-					</div>
-					<div class="ans" id ="ans5" onclick="verifyAns(0,0,0,1)">
-						\(\{\omega_4\}\)
-					</div>
-					<div class="ans" id ="ans6" onclick="verifyAns(1,1,0,0)">
-						\(\{\omega_1, \omega_2\}\)
-					</div>
-					<div class="ans" id ="ans7" onclick="verifyAns(1,0,1,0)">
-						\(\{\omega_1, \omega_3\}\)
-					</div>
-					<div class="ans" id ="ans8" onclick="verifyAns(1,0,0,1)">
-						\(\{\omega_1, \omega_4\}\)
-					</div>
-					<div class="ans" id ="ans9" onclick="verifyAns(0,1,1,0)">
-						\(\{\omega_2, \omega_3\}\)
-					</div>
-					<div class="ans" id ="ans10" onclick="verifyAns(0,1,0,1)">
-						\(\{\omega_2, \omega_4\}\)
-					</div>
-					<div class="ans" id ="ans11" onclick="verifyAns(0,0,1,1)">
-						\(\{\omega_3, \omega_4\}\)
-					</div>
-					<div class="ans" id ="ans12" onclick="verifyAns(1,1,1,0)">
-						\(\{\omega_1, \omega_2, \omega_3\}\)
-					</div>
-					<div class="ans" id ="ans13" onclick="verifyAns(1,1,0,1)">
-						\(\{\omega_1, \omega_2, \omega_4\}\)
-					</div>
-					<div class="ans" id ="ans14" onclick="verifyAns(1,0,1,1)">
-						\(\{\omega_1, \omega_3, \omega_4\}\)
-					</div>
-					<div class="ans" id ="ans15" onclick="verifyAns(0,1,1,1)">
-						\(\{\omega_2, \omega_3, \omega_4\}\)
-					</div>
-					<div class="ans" id ="ans16" onclick="verifyAns(1,1,1,1)">
-						\(\{\omega_1, \omega_2, \omega_3, \omega_4\}\)
-					</div>
-				</div>				
-				<div class = "item5">
-					<button id = "randomNumGeneratorButton" onclick="resetValues()">
-						Reset 
-					</button>
-				</div>
-			</div>
-			<div class="observationContainer">
-				<u> Observations </u>
-				<p id="observationText1"> 
-					Please generate the values using the "Generate" button
-				<div class = "graphContainer">
-				<canvas id="myChart1"></canvas>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-	<script src="./js/inverse-image.js"></script>
+<div class="container">
+    <div class="tasks-heading">Tasks</div>
+    <div class="v-tabs">
+        <ul>
+            <li><a href="sigma-algebra.html">Sub Experiment 1</a></li>
+            <li class="is-active"><a>Sub Experiment 2</a></li>
+            <li><a href="valid-rv.html">Sub Experiment 3</a></li>
+        </ul>
+    </div>
+
+    <div class="subheading-box">
+        <p class="title">Finding the Inverse Image of a Function</p>
+    </div>
+
+    <div class="columns is-centered">
+        <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-collapsible-instruction-container v-instruction-container">
+                <div class="v-collapsible is-size-5">Instructions</div>
+                <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+                    <b>Quick theory overview:</b>
+                    <p>For a function \(\mathcal{f}\) that maps outcomes \(\omega\) from a sample space \(\Omega\) to the real numbers, the **inverse image** of a set \(B\) is the collection of all outcomes that map into \(B\). We are interested in sets of the form \(B = (-\infty, c]\). Therefore, the inverse image is:</p>
+                    <p style="text-align:center; font-size: 1.2em;">\(f^{-1}((-\infty, c]) = \{ \omega_i \in \Omega \mid f(\omega_i) \leq c\}\)</p>
+                    
+                    <h4 style="font-weight: 600; font-size: 1.15em; margin-top: 1rem;">Procedure:</h4>
+                    <ul style="list-style: disc; margin-left: 20px;">
+                        <li>Enter a value for the constant **'c'** in the input box.</li>
+                        <li>Press the **"Generate Function Values"** button. This will create a new random function \(\mathcal{f}\) and display its output values.</li>
+                        <li>The plot will visualize the function values and show the threshold 'c' as a horizontal line.</li>
+                        <li>Based on the definition, determine which outcomes \(\{\omega_1, \omega_2, \omega_3, \omega_4\}\) have function values less than or equal to 'c'.</li>
+                        <li>Select the correct set from the grid of possible answers.</li>
+                        <li>The "Observations" panel will provide immediate feedback on your selection.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <section id="experiment-area">
+        <div class="columns is-centered">
+            <!-- Left Column: Controls & Answers -->
+            <div class="column is-7-desktop is-12-tablet">
+                <div class="v-datalist-container components-list">
+                    <!-- Controls -->
+                    <div class="white-boxed-panel control-panel">
+                        <div class="control-item">
+                            <label for="c-input" class="label">1. Enter a value for 'c':</label>
+                            <input id="c-input" class="input is-primary" type="number" value="1.0">
+                        </div>
+                        <div class="control-item">
+                            <label class="label">2. Generate Function:</label>
+                            <button id="generate-btn" class="button is-link is-fullwidth">Generate Function Values</button>
+                        </div>
+                    </div>
+                    <!-- Function Values Display -->
+                    <div class="white-boxed-panel function-values-display">
+                        <div class="value-item">\(f(\omega_1)\) = <span id="w1-val" > ? </span></div>
+                        <div class="value-item">\(f(\omega_2)\) = <span id="w2-val" > ? </span></div>
+                        <div class="value-item">\(f(\omega_3)\) = <span id="w3-val" > ? </span></div>
+                        <div class="value-item">\(f(\omega_4)\) = <span id="w4-val" > ? </span></div>
+                    </div>
+                    <!-- Answer Grid -->
+                    <div class="white-boxed-panel">
+                        <h4 class="v-datalist-subtitle">3. Select the correct inverse image set:</h4>
+                        <div id="answer-grid" class="answer-grid">
+                            <!-- JS will populate this -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Plot & Observations -->
+            <div class="column is-5-desktop is-12-tablet">
+                <div class="v-datalist-container components-list">
+                    <div class="white-boxed-panel plot-wrapper">
+                        <canvas id="inverse-chart"></canvas>
+                    </div>
+                    <div class="white-boxed-panel">
+                        <h4 class="v-datalist-title">Observations</h4>
+                        <div id="observations-panel" class="observations-content">
+                            Enter a value for 'c' and generate the function.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+<script src="./js/inverse-image.js"></script>
 </body>
 </html>

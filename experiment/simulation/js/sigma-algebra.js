@@ -1,238 +1,185 @@
-var cnt1 = 0;
-var cnt2 = 0;
-var maxCnt1 = 1;
-var maxCnt2 = 4;
+// --------------------------------------
+// 1. DOM References
+// --------------------------------------
+const problemDesc = document.getElementById('problem-description');
+const availableSetsContainer = document.getElementById('available-sets');
+const userCollectionContainer = document.getElementById('user-collection');
+const checkBtn = document.getElementById('check-btn');
+const newProblemBtn = document.getElementById('new-problem-btn');
+const observationsPanel = document.getElementById('observations-panel');
+// FIX: Added reference to the new hint button
+const hintBtn = document.getElementById('hint-btn');
 
-var ids1 = ["a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1", "i1", "j1", "k1", "l1", "m1"]
-var ids2 = ["a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "i2", "j2", "k2", "l2", "m2"]
-var ids3 = ["b3", "c3", "d3", "e3", "f3", "g3", "h3", "i3", "j3", "k3", "l3", "m3"]
-var ids4 = ["b4", "c4", "d4", "e4", "f4", "g4", "h4", "i4", "j4", "k4", "l4", "m4"]
-
-var idToSet = {
-  "a": [0, 1, 0, 0],
-  "b": [0, 0, 1, 0],
-  "c": [0, 0, 0, 1],
-  "d": [1, 1, 0, 0],
-  "e": [1, 0, 1, 0],
-  "f": [1, 0, 0, 1],
-  "g": [0, 1, 1, 0],
-  "h": [0, 1, 0, 1],
-  "i": [0, 0, 1, 1],
-  "j": [1, 1, 1, 0],
-  "k": [1, 1, 0, 1],
-  "l": [1, 0, 1, 1],
-  "m": [0, 1, 1, 1]
-}
-
-var sampleSpace = [1, 1, 1, 1]
-var coll1 = [[0, 0, 0, 0], [1, 1, 1, 1], [1, 0, 0, 0]];
-var coll2 = [[0, 0, 0, 0], [1, 1, 1, 1], [1, 0, 0, 0], [0, 1, 0, 0]];
-
-function initialPosition(id1, id2) {
-  id1.style.display = "block";
-  id1.style.display = "flex";
-  id2.style.display = "none";
-
-  const obs1 = document.getElementById("observations1");
-  obs1.innerHTML = "";
-  const res1 = document.getElementById("results1");
-  res1.innerHTML = "";
-  const obs2 = document.getElementById("observations2");
-  obs2.innerHTML = "";
-  const res2 = document.getElementById("results2");
-  res2.innerHTML = "";
-}
-function hide1(id1, id2) {
-  if (cnt1 < maxCnt1) {
-    cnt1 = cnt1 + 1;
-    id1 = document.getElementById(id1);
-    id2 = document.getElementById(id2);
-    initialPosition(id2, id1);
-  }
-}
-function hide2(id1, id2) {
-  cnt1 = cnt1 - 1;
-  id1 = document.getElementById(id1);
-  id2 = document.getElementById(id2);
-  initialPosition(id1, id2);
-}
-function hide3(id3, id4) {
-  if (cnt2 < maxCnt2) {
-    cnt2 = cnt2 + 1;
-    id3 = document.getElementById(id3);
-    id4 = document.getElementById(id4);
-    initialPosition(id4, id3);
-  }
-}
-function hide4(id3, id4) {
-  cnt2 = cnt2 - 1;
-  id3 = document.getElementById(id3);
-  id4 = document.getElementById(id4);
-  initialPosition(id3, id4);
-}
-
-function complement(set) {
-  // Gives binary complement of the given set
-  var comp = set.slice();
-  for (var i = 0; i < set.length; i++) {
-    if (set[i] == 1) {
-      comp[i] = 0;
+// --------------------------------------
+// 2. Problem Database & State
+// --------------------------------------
+const SAMPLE_SPACE = ['a', 'b', 'c', 'd'];
+const PROBLEMS = [
+    {
+        initial: ['{}', '{a,b,c,d}', '{a,b}'],
+        answer: ['{c,d}']
+    },
+    {
+        initial: ['{}', '{a,b,c,d}', '{a}', '{b}'],
+        answer: ['{a,b}', '{c,d}', '{a,c,d}', '{b,c,d}']
+    },
+    {
+        initial: ['{}', '{a,b,c,d}', '{a,c}'],
+        answer: ['{b,d}']
+    },
+    {
+        initial: ['{}', '{a,b,c,d}', '{a,b}', '{c}'],
+        answer: ['{d}', '{c,d}', '{a,b,c}', '{a,b,d}']
+    },
+    {
+        initial: ['{}', '{a,b,c,d}', '{a}', '{b}', '{c,d}'],
+        answer: ['{a,b}', '{a,c,d}', '{b,c,d}']
     }
-    else {
-      comp[i] = 1;
+];
+
+let currentProblem;
+
+// --------------------------------------
+// 3. Helper & Logic Functions
+// --------------------------------------
+const stringToSet = (str) => {
+    const set = [0, 0, 0, 0];
+    SAMPLE_SPACE.forEach((el, i) => {
+        if (str.includes(el)) set[i] = 1;
+    });
+    return set;
+};
+
+const setToString = (set) => {
+    const elements = SAMPLE_SPACE.filter((_, i) => set[i] === 1);
+    return elements.length > 0 ? `{${elements.join(',')}}` : '{}';
+};
+
+const getPowerSet = () => {
+    const base = SAMPLE_SPACE;
+    // Generates all 16 subsets of the sample space
+    const powerSetStrings = Array.from(
+        { length: 1 << base.length },
+        (_, i) => {
+            const subset = base.filter((_, j) => (i >> j) & 1);
+            return subset.length > 0 ? `{${subset.join(',')}}` : '{}';
+        }
+    );
+    return powerSetStrings;
+};
+
+
+const complement = (set) => set.map(x => 1 - x);
+const union = (set1, set2) => set1.map((val, i) => val || set2[i]);
+
+function isSigmaAlgebra(collectionOfStrings) {
+    const collectionOfSets = collectionOfStrings.map(stringToSet);
+    const omega = stringToSet(`{${SAMPLE_SPACE.join(',')}}`);
+    const empty = stringToSet('{}');
+
+    if (!collectionOfStrings.includes(setToString(omega)) || !collectionOfStrings.includes(setToString(empty))) {
+        return { valid: false, reason: `The collection must contain the empty set \(\emptyset\) and the sample space \(\Omega\).` };
     }
-  }
-  return comp;
-}
-function union(set1, set2) {
-  // Gives binary union of the given sets
-  var unionSet = set1.slice();
-  for (var i = 0; i < set1.length; i++) {
-    if (set2[i] == 1) {
-      unionSet[i] = 1;
+
+    for (const str of collectionOfStrings) {
+        const set = stringToSet(str);
+        const comp = complement(set);
+        if (!collectionOfStrings.includes(setToString(comp))) {
+            return { valid: false, reason: `The complement of <strong>${str}</strong>, which is <strong>${setToString(comp)}</strong>, is not included.` };
+        }
     }
-  }
-  return unionSet;
-}
-function setToEvent(set) {
-  // Gives the event corresponding to the given set for the sample space {a,b,c,d}
-  var event = "{";
-  if (set[0] == 1) {
-    event = event + "a,";
-  }
-  if (set[1] == 1) {
-    event = event + "b,";
-  }
-  if (set[2] == 1) {
-    event = event + "c,";
-  }
-  if (set[3] == 1) {
-    event = event + "d";
-  }
-  return event + "}";
-}
-function isSigmaAlgebra(coll, sampleSpace) {
-  // check if the collection is a sigma algebra
-
-  // check if sample space is present in the collection
-  console.log(coll.some(e => JSON.stringify(e) === JSON.stringify(sampleSpace)));
-  if (!coll.some(e => JSON.stringify(e) === JSON.stringify(sampleSpace))) {
-    return [false, "sample space not included"];
-  }
-  // check if the collection is closed under complement
-  for (var i = 0; i < coll.length; i++) {
-    var comp = complement(coll[i]);
-    if (!coll.some(e => JSON.stringify(e) === JSON.stringify(comp))) {
-      return [false, "complement of " + setToEvent(coll[i]) + " is not there in the choosen collection."];
+    
+    for (const str1 of collectionOfStrings) {
+        for (const str2 of collectionOfStrings) {
+            const set1 = stringToSet(str1);
+            const set2 = stringToSet(str2);
+            const unionSet = union(set1, set2);
+            if (!collectionOfStrings.includes(setToString(unionSet))) {
+                return { valid: false, reason: `The union of <strong>${str1}</strong> and <strong>${str2}</strong>, which is <strong>${setToString(unionSet)}</strong>, is not included.` };
+            }
+        }
     }
-  }
-  // check if the collection is closed under union
-  for (var i = 0; i < coll.length; i++) {
-    for (var j = i; j < coll.length; j++) {
-      var unionSet = union(coll[i], coll[j]);
-      if (!coll.some(e => JSON.stringify(e) === JSON.stringify(unionSet))) {
-        return [false, "union of " + setToEvent(coll[i]) + " and " + setToEvent(coll[j]) + " is not included in the choosen collection."];
-      }
+    return { valid: true, reason: 'This collection satisfies all axioms!' };
+}
+
+// --------------------------------------
+// 4. UI Functions
+// --------------------------------------
+function createTile(setText) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.textContent = setText;
+    tile.dataset.set = setText;
+    tile.addEventListener('click', handleTileClick);
+    return tile;
+}
+
+function handleTileClick(event) {
+    const tile = event.target;
+    if (tile.parentElement.id === 'available-sets') {
+        userCollectionContainer.appendChild(tile);
+    } else {
+        availableSetsContainer.appendChild(tile);
     }
-  }
-  return [true, "sigma algebra"];
+    // Clear observations when user makes a change
+    observationsPanel.innerHTML = '<p>Select the required sets and click "Check Answer".</p>';
 }
-function choosenId(ids) {
-  // gives the ids which are choosen
-  var choosedIds = [];
-  for (var i = 0; i < ids.length; i++) {
-    var id = document.getElementById(ids[i]);
-    if (id.style.display == "flex") {
-      choosedIds.push(ids[i]);
+
+function setupProblem() {
+    availableSetsContainer.innerHTML = '';
+    userCollectionContainer.innerHTML = '';
+    observationsPanel.innerHTML = '<p>Select the required sets and click "Check Answer".</p>';
+    
+    currentProblem = PROBLEMS[Math.floor(Math.random() * PROBLEMS.length)];
+    const allSets = getPowerSet();
+    
+    const nonProblemSets = allSets.filter(set => 
+        !currentProblem.initial.includes(set) && !currentProblem.answer.includes(set)
+    );
+    
+    const distractors = nonProblemSets.sort(() => 0.5 - Math.random()).slice(0, 5);
+    
+    const options = [...currentProblem.answer, ...distractors];
+    options.sort(() => Math.random() - 0.5);
+
+    options.forEach(setText => availableSetsContainer.appendChild(createTile(setText)));
+    
+    problemDesc.innerHTML = `
+        <p>Given Ω = <strong>{${SAMPLE_SPACE.join(', ')}}</strong> and an initial collection C = <strong>{${currentProblem.initial.join(', ')}}</strong>.</p>
+        <p>Select the minimum sets required to make C a Sigma Algebra.</p>
+    `;
+}
+
+// --------------------------------------
+// 5. Event Handlers & Initialization
+// --------------------------------------
+function checkAnswer() {
+    const userAddedSets = Array.from(userCollectionContainer.children).map(tile => tile.dataset.set);
+    const userFullCollection = [...currentProblem.initial, ...userAddedSets];
+    const { valid, reason } = isSigmaAlgebra(userFullCollection);
+
+    if (valid) {
+        const userSet = new Set(userAddedSets.sort());
+        const answerSet = new Set(currentProblem.answer.sort());
+        
+        if (userSet.size === answerSet.size && [...userSet].every(val => answerSet.has(val))) {
+             observationsPanel.innerHTML = '<p class="feedback-correct">Correct! You have formed a valid Sigma Algebra with the minimum number of additional sets.</p>';
+        } else {
+            observationsPanel.innerHTML = `<p class="feedback-incorrect">This is a valid Sigma Algebra, but not the minimal one!</p><p>You added ${userSet.size} set(s), but only ${answerSet.size} were required to form the smallest possible sigma-algebra.</p>`;
+        }
+    } else {
+        observationsPanel.innerHTML = `<p class="feedback-incorrect">Incorrect.</p><p>${reason}</p>`;
     }
-  }
-  return choosedIds;
-}
-function checkSoln(collGiven, idGiven) {
-  var coll = [];
-  var ids = idGiven;
-  var choosedIds = choosenId(ids);
-
-  // insert set to the collection based on the choosen ids
-  for (var i = 0; i < choosedIds.length; i++) {
-    var id = choosedIds[i];
-    var set = idToSet[id[0]];
-    coll.push(set);
-  }
-  coll = [...coll, ...collGiven]
-  // check if the collection is a sigma algebra
-  var res = isSigmaAlgebra(coll, sampleSpace);
-  return res;
 }
 
-function check1() {
-  const obs1 = document.getElementById("observations1");
-
-  if (cnt1 == 0) {
-    obs1.innerHTML = "Click on the sets"
-    obs1.style.color = "black";
-    return;
-  }
-  const res1 = document.getElementById("results1");
-  const response = checkSoln(coll1, ids2);
-  if (response[0] == true) {
-    obs1.innerHTML = "<b>Correct Answer!!!</b>"
-    obs1.style.color = "green";
-    res1.innerHTML = "The given collection is a sigma algebra.";
-  }
-  else {
-    obs1.innerHTML = "<b>Wrong Answer :(</b> ";
-    obs1.style.color = "red";
-    res1.innerHTML = "The given collection is not a sigma algebra, because " + response[1];
-  }
-}
-function check2() {
-  const obs2 = document.getElementById("observations2");
-
-  if (cnt2 == 0) {
-    obs2.innerHTML = "Click on the sets"
-    obs2.style.color = "black";
-    return;
-  }
-  const res2 = document.getElementById("results2");
-  const response = checkSoln(coll2, ids4);
-  if (response[0] == true) {
-    obs2.innerHTML = "<b>Correct Answer!!!</b>"
-    obs2.style.color = "green";
-    res2.innerHTML = "The given collection is a sigma algebra.";
-  }
-  else {
-    obs2.innerHTML = "<b>Wrong Answer :(</b> ";
-    obs2.style.color = "red";
-    res2.innerHTML = "The given collection is not a sigma algebra, because " + response[1];
-  }
+function showHint() {
+    if (currentProblem) {
+        const hintText = `You need to add <strong>${currentProblem.answer.length}</strong> set(s) to the collection.`;
+        observationsPanel.innerHTML = `<p class="feedback-hint">${hintText}</p>`;
+    }
 }
 
-function reset1() {
-  cnt1 = 0;
-  for (var i = 0; i < ids1.length; i++) {
-    initialPosition(document.getElementById(ids1[i]), document.getElementById(ids2[i]));
-  }
-}
-function reset2() {
-  cnt2 = 0;
-  for (var i = 0; i < ids3.length; i++) {
-    initialPosition(document.getElementById(ids3[i]), document.getElementById(ids4[i]));
-  }
-}
-
-function page1() {
-  const p1 = document.getElementById("page1");
-  const p2 = document.getElementById("page2");
-  reset1();
-  p1.style.display = "block";
-  p2.style.display = "none";
-}
-function page2() {
-  const p1 = document.getElementById("page1");
-  const p2 = document.getElementById("page2");
-  reset2();
-  p1.style.display = "none";
-  p2.style.display = "block";
-
-}
+checkBtn.addEventListener('click', checkAnswer);
+newProblemBtn.addEventListener('click', setupProblem);
+hintBtn.addEventListener('click', showHint);
+window.addEventListener('load', setupProblem);
