@@ -1,247 +1,178 @@
-var currFun1 = 0;
-var functions1 = [[1, 0, 0, 0], [0, 2, 2, 2], [1, 3, 2, 4], [3.5, 2, 3, 4]];
-var sigmaAlgebra1 = [[0, 0, 0, 0], [1, 1, 1, 1], [1, 0, 0, 0], [0, 1, 1, 1]];
-var sampleSpace = ["W1", "W2", "W3", "W4"];
+// --------------------------------------
+// 1. DOM References
+// --------------------------------------
+const problemDesc = document.getElementById('problem-description');
+const cardsContainer = document.getElementById('function-cards-container');
+const checkBtn = document.getElementById('check-btn');
+const newProblemBtn = document.getElementById('new-problem-btn');
+const observationsPanel = document.getElementById('observations-panel');
+const plotContainer = document.getElementById('plot-container');
+const canvas = document.getElementById('explanation-canvas');
+const ctx = canvas.getContext('2d');
 
-const fillHeight = 50;
-const extraNums = 1;
-document.addEventListener("DOMContentLoaded", function () {
-    reset1();
-});
+// --------------------------------------
+// 2. Database & State
+// --------------------------------------
+const SAMPLE_SPACE = ['ω₁', 'ω₂', 'ω₃', 'ω₄'];
+const SIGMA_ALGEBRAS = [
+    { name: 'Trivial', sets: [[0,0,0,0], [1,1,1,1]] },
+    { name: 'F₁', sets: [[0,0,0,0], [1,1,1,1], [1,0,0,0], [0,1,1,1]] },
+    { name: 'F₂', sets: [[0,0,0,0], [1,1,1,1], [1,1,0,0], [0,0,1,1]] },
+    { name: 'Power Set', sets: Array.from({length: 16}, (_, i) => [i&8&&1, i&4&&1, i&2&&1, i&1&&1])}
+];
+const FUNCTIONS = [
+    { name: 'f₁', mapping: [1, 1, 1, 1] }, // Constant, always RV
+    { name: 'f₂', mapping: [1, 2, 3, 4] },
+    { name: 'f₃', mapping: [1, 2, 2, 1] },
+    { name: 'f₄', mapping: [3, 1, 1, 3] },
+    { name: 'f₅', mapping: [1, 1, 4, 4] },
+    { name: 'f₆', mapping: [1, 2, 1, 2] },
+];
 
-function reset1() {
-    const obs1 = document.getElementById("observations1");
-    obs1.innerHTML = ""
+let currentSigmaAlgebra;
+let currentFunctions;
+let correctAnswers;
 
-    const result1 = document.getElementById("results1");
-    result1.innerHTML = "Please select a function to check if it is a Random Variable or not.";
+// --------------------------------------
+// 3. Logic Functions
+// --------------------------------------
+const inverseSet = (fun, val) => fun.map(v => v <= val ? 1 : 0);
+const setToString = (set) => `{${SAMPLE_SPACE.filter((_, i) => set[i] === 1).join(',')}}`.replace('{}', '∅');
 
-    const canvas1 = document.getElementById("canvas1");
-    canvas1.style.border = "";
-    const ctx = canvas1.getContext("2d");
-    ctx.clearRect(0, 0, canvas1.width, canvas1.height);
-
-
-    currFun1 = 0;
-    document.getElementById("img_f1").classList.remove("selected-img");
-    document.getElementById("img_f2").classList.remove("selected-img");
-    document.getElementById("img_f3").classList.remove("selected-img");
-    document.getElementById("img_f4").classList.remove("selected-img");
-}
-function chooseFunction1(num) {
-    // selects the function and highlights the image of the function
-    reset1();
-    currFun1 = num;
-    const img = document.getElementById("img_f" + num);
-    img.classList.add("selected-img");
-}
-function inverseSet(fun, val) {
-    // finds the inverse of the function for the given value
-    var res = fun.slice();
-    for (let i = 0; i < fun.length; i++) {
-        if (fun[i] <= val) {
-            res[i] = 1;
-        } else {
-            res[i] = 0;
+function checkRV(sigmaAlgebraSets, funMapping) {
+    const sortedUniqueVals = [...new Set(funMapping)].sort((a, b) => a - b);
+    const testPoints = [-Infinity, ...sortedUniqueVals, Infinity];
+    
+    for (const point of testPoints) {
+        const invSet = inverseSet(funMapping, point);
+        const isPresent = sigmaAlgebraSets.some(s => s.toString() === invSet.toString());
+        if (!isPresent) {
+            return { isValid: false, reason: `For c = ${point}, the inverse image is ${setToString(invSet)}, which is not in the sigma algebra.` };
         }
     }
-    return res;
-}
-function checkRV(sigmaAlgebra, fun) {
-    // checks if the given function is a Random Variable or not
-    var sortedFun = [...new Set(fun)].sort(function (a, b) { return a - b });
-    for (let i = 0; i <= sortedFun.length; i++) {
-        var val;
-        if (i == 0) val = sortedFun[i] - 1;
-        else if (i == sortedFun.length) val = sortedFun[i - 1] + 1;
-        else val = (sortedFun[i] + sortedFun[i - 1]) / 2;
-        var inverse = inverseSet(fun, val);
-        // check if inverse array is same as any of the sigmaAlgebra array
-        var found = false;
-        for (let j = 0; j < sigmaAlgebra.length; j++) {
-            if (inverse.toString() == sigmaAlgebra[j].toString()) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            return [false, val];
-        }
-    }
-    return [true, -5000];
+    return { isValid: true };
 }
 
-function check1() {
-    if (currFun1 == 0) {
-        alert("Please select a function.");
-        reset1();
-        return;
-    }
-    var res = checkRV(sigmaAlgebra1, functions1[currFun1 - 1]);
-    const result1 = document.getElementById("results1");
-    const obs1 = document.getElementById("observations1");
-    if (res[0]) {
-        result1.innerHTML = "The given function is a Random Variable.";
-        obs1.innerHTML = "<b>Correct Answer!!!</b>"
-        obs1.style.color = "green";
-    } else {
-        result1.innerHTML = "The inverse image of the function for <b><span style='color:red'>" + res[1] + "</span></b> is not present in the sigma algebra. Hence, the given function is not a Random Variable.";
-        obs1.innerHTML = "<b>Wrong Answer :(</b> ";
-        obs1.style.color = "red";
-    }
-    plotCanvas("canvas1", functions1[currFun1 - 1], res[1]);
+// --------------------------------------
+// 4. UI & Plotting Functions
+// --------------------------------------
+function createFunctionCard(func, id) {
+    const card = document.createElement('div');
+    card.className = 'function-card';
+    card.dataset.id = id;
+    card.innerHTML = `<h5>${func.name}</h5><p>${SAMPLE_SPACE.map((w, i) => `${w} → ${func.mapping[i]}`).join('<br>')}</p>`;
+    card.addEventListener('click', () => card.classList.toggle('is-selected'));
+    return card;
 }
-function plotNumberLine(id, fun) {
-    const canvas = document.getElementById(id);
-    canvas.style.width = "100%"; // Set the width dynamically based on the container
-    canvas.style.height = "100%"; // Set the height dynamically based on the container
-    canvas.style.border = "1px solid #ccc";
 
-    // Use 'canvas' for your custom drawings or visualizations
-    const ctx = canvas.getContext("2d");
+function plotInvalidReason(fun, sigmaAlgebra, c) {
+    plotContainer.classList.remove('is-hidden');
+    const fillHeight = 50;
+    const extraNums = 1;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // draw numberline for the function with integers marked on the line and the function values also marked
     ctx.beginPath();
     ctx.moveTo(10, canvas.height / 2);
     ctx.lineTo(canvas.width - 10, canvas.height / 2);
     ctx.stroke();
-    ctx.font = "10px Arial";
+    ctx.font = "12px sans-serif";
 
-    const maxVal = Math.ceil(Math.max(...fun));
-    const minVal = Math.floor(Math.min(...fun));
-    const range = maxVal - minVal + 2*extraNums;
+    const values = fun.mapping;
+    const maxVal = Math.ceil(Math.max(...values, c));
+    const minVal = Math.floor(Math.min(...values, c));
+    const range = maxVal - minVal + 2 * extraNums;
     const step = (canvas.width - 20) / range;
 
+    // Draw ticks
     for (let i = 0; i <= range; i++) {
-        ctx.moveTo(10 + i * step, canvas.height / 2 - 3);
-        ctx.lineTo(10 + i * step, canvas.height / 2 + 3);
+        const xPos = 10 + i * step;
+        ctx.moveTo(xPos, canvas.height / 2 - 4);
+        ctx.lineTo(xPos, canvas.height / 2 + 4);
         ctx.stroke();
         ctx.fillStyle = "black";
-        ctx.fillText(minVal - extraNums + i, 10 + i * step, canvas.height / 2 - 10);
+        ctx.fillText(minVal - extraNums + i, xPos - 3, canvas.height / 2 - 12);
     }
-    var valueMap = {};
-    for (let i = 0; i < fun.length; i++) {
+    
+    // Draw points for function values
+    values.forEach((val, i) => {
+        const xPos = 10 + (val - minVal + extraNums) * step;
+        ctx.beginPath();
+        ctx.arc(xPos, canvas.height / 2, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = "blue";
+        ctx.fill();
         ctx.fillStyle = "black";
-        ctx.moveTo(10 + (fun[i] - minVal + extraNums) * step, canvas.height / 2 - 3);
-        ctx.lineTo(10 + (fun[i] - minVal + extraNums) * step, canvas.height / 2 + 3);
-        ctx.stroke();
-        ctx.fillText(fun[i], 10 + (fun[i] - minVal + extraNums) * step, canvas.height / 2 - 10);
-        if (valueMap[fun[i]] == undefined) {
-            valueMap[fun[i]] = 1;
-            ctx.fillText("W" + (i + 1), 10 + (fun[i] - minVal + extraNums) * step, 90);
-        }
-        else {
-            valueMap[fun[i]]++;
-            ctx.fillText("W" + (i + 1), 10 + (fun[i] - minVal + extraNums) * step, 80 + valueMap[fun[i]] * 10);
-        }
-    }
-    ctx.fillStyle = "rgba(0, 0, 200, 0.2)";
-    ctx.fillRect(10, canvas.height / 2 - fillHeight / 2, canvas.width - 20, fillHeight);
-    ctx.stroke();
-    return ctx;
-}
-function shadeCanvasToLeft(ctx, fun, val) {
+        ctx.fillText(SAMPLE_SPACE[i], xPos - 10, canvas.height / 2 + 25);
+    });
+
+    // Shade inverse image area and draw the 'c' line
+    const cPos = 10 + (c - minVal + extraNums) * step;
+    ctx.fillStyle = "rgba(255, 56, 96, 0.3)";
+    ctx.fillRect(10, canvas.height/2 - fillHeight/2, cPos - 10, fillHeight);
+    
     ctx.beginPath();
-    ctx.fillStyle = "rgba(0, 0, 200, 0.2)";
-    // Calculate the coordinates and dimensions based on the canvas size
-    const canvasWidth = ctx.canvas.width;
-    const canvasHeight = ctx.canvas.height;
-    const maxVal = Math.ceil(Math.max(...fun));
-    const minVal = Math.floor(Math.min(...fun));
-    const range = maxVal - minVal + 2*extraNums;
-    const step = (canvasWidth - 20) / range;
-    const startX = 10;
-    const rectWidth = (val - minVal + extraNums) * step;
-
-    ctx.fillRect(startX, canvasHeight / 2 - fillHeight / 2, rectWidth, fillHeight);
-    ctx.moveTo(startX + rectWidth, canvasHeight / 2 - fillHeight/2);
-    ctx.lineTo(startX + rectWidth, canvasHeight / 2 + fillHeight/2);
+    ctx.moveTo(cPos, canvas.height / 2 - fillHeight/2);
+    ctx.lineTo(cPos, canvas.height / 2 + fillHeight/2);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 2;
     ctx.stroke();
-    ctx.fillStyle = "black";
-    ctx.fillText(val, startX + rectWidth, canvasHeight / 2 - fillHeight/2);
-}
-function plotCanvas(id, fun, val) {
-    const ctx = plotNumberLine(id, fun);
-    if (val != -5000)
-        shadeCanvasToLeft(ctx, fun, val);
+    ctx.fillStyle = "red";
+    ctx.fillText(`c=${c}`, cPos + 5, canvas.height / 2);
 }
 
+// --------------------------------------
+// 5. Main Control Functions
+// --------------------------------------
+function setupProblem() {
+    cardsContainer.innerHTML = '';
+    observationsPanel.innerHTML = '<p>Select one or more functions and click "Check Answer".</p>';
+    plotContainer.classList.add('is-hidden');
 
-/////////////////////////////////////////////////////////////////////
-// function createCanvas(id) {
-//     const canvas = document.getElementById(id);
-//     canvas.style.width = "100%"; // Set the width dynamically based on the container
-//     canvas.style.height = "100%"; // Set the height dynamically based on the container
-//     canvas.style.border = "1px solid #ccc";
+    currentSigmaAlgebra = SIGMA_ALGEBRAS[Math.floor(Math.random() * SIGMA_ALGEBRAS.length)];
+    correctAnswers = FUNCTIONS.filter(f => checkRV(currentSigmaAlgebra.sets, f.mapping).isValid);
+    const incorrectAnswers = FUNCTIONS.filter(f => !checkRV(currentSigmaAlgebra.sets, f.mapping).isValid);
+    
+    currentFunctions = [...correctAnswers, ...incorrectAnswers.slice(0, 4 - correctAnswers.length)];
+    currentFunctions.sort(() => Math.random() - 0.5);
 
-//     // Use 'canvas' for your custom drawings or visualizations
-//     const ctx = canvas.getContext("2d");
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     // draw numberline from -10 to 10 and mark these points on the line
-//     ctx.beginPath();
-//     ctx.moveTo(10, canvas.height / 2);
-//     ctx.lineTo(canvas.width - 10, canvas.height / 2);
-//     ctx.stroke();
-//     ctx.font = "10px Arial";
-//     // mark points -10 -5 0 5 10 with a vertical line
-//     for (let i = 0; i < 6; i++) {
-//         ctx.moveTo(10 + i * (canvas.width - 20) / 5, canvas.height / 2 - 3);
-//         ctx.lineTo(10 + i * (canvas.width - 20) / 5, canvas.height / 2 + 3);
-//         ctx.stroke();
-//         ctx.fillStyle = "black";
-//         ctx.fillText(-1 + i, 10 + i * (canvas.width - 20) / 5, canvas.height / 2 - 10);
-//     }
-//     return ctx;
-// }
-// function createCanvasInObservation1() {
-//     const ctx = createCanvas("canvas1");
-//     ctx.fillStyle = "black";
-//     ctx.fillText("W1", 10 + 2 * 56, 90);
-//     ctx.fillText("W2", 10 + 3 * 56, 90);
-//     ctx.fillText("W3", 10 + 4 * 56, 90);
-//     return ctx;
-// }
-// function shadeCanvas(ctx, start, end, region) {
-//     ctx.beginPath();
-//     if (region == 1) {
-//         ctx.fillStyle = "rgba(0, 0, 200, 0.2)";
-//     } else if (region == 2) {
-//         ctx.fillStyle = "rgba(200, 0, 0, 0.2)";
-//     } else if (region == 3) {
-//         ctx.fillStyle = "rgba(0, 200, 0, 0.2)";
-//     } else {
-//         ctx.fillStyle = "rgba(0, 0, 200, 0.2)";
-//     }
+    currentFunctions.forEach((func, i) => cardsContainer.appendChild(createFunctionCard(func, i)));
 
-//     // Calculate the coordinates and dimensions based on the canvas size
-//     const canvasWidth = ctx.canvas.width;
-//     const canvasHeight = ctx.canvas.height;
-//     const startX = 10 + start * (canvasWidth - 20) / 5;
-//     const rectWidth = (end - start) * (canvasWidth - 20) / 5;
+    const sigmaString = currentSigmaAlgebra.sets.map(setToString).join(', ');
+    problemDesc.innerHTML = `<p>Given \(\Omega\) = {${SAMPLE_SPACE.join(', ')}} and \(\mathcal{F}\) = <strong>{${sigmaString}}</strong></p>`;
+}
 
-//     ctx.fillRect(startX, canvasHeight / 2 - 15, rectWidth, 30);
-//     ctx.stroke();
-// }
-// function showResults1() {
-//     const ctx = createCanvasInObservation1();
-//     shadeCanvas(ctx, 0, 2, 1);
-//     shadeCanvas(ctx, 2, 3, 2);
-//     shadeCanvas(ctx, 3, 4, 3);
-//     shadeCanvas(ctx, 4, 5, 4);
-//     const result1 = document.getElementById("results1");
-//     result1.innerHTML = "The inverse image of enteries in the 2nd interval , i.e. from 1 to 2 are not present in the sigma algebra. Hence, the given function is not a Random Variable.";
-// }
-// function changeSelect1(selection) {
-//     const obs1 = document.getElementById("observations1");
-//     reset1();
-//     if (selection == 1) {
-//         obs1.innerHTML = "<b>Wrong Answer :(</b> ";
-//         obs1.style.color = "red";
-//         document.getElementById("yes-btn-1").classList.add("selected-btn");
-//     } else {
-//         obs1.innerHTML = "<b>Correct Answer!!!</b>"
-//         obs1.style.color = "green";
-//         document.getElementById("no-btn-1").classList.add("selected-btn");
-//     }
-//     showResults1();
-// }
+function checkAnswer() {
+    const selectedCards = Array.from(cardsContainer.querySelectorAll('.is-selected'));
+    if (selectedCards.length === 0) {
+        observationsPanel.innerHTML = '<p class="feedback-incorrect">Please select at least one function to check.</p>';
+        plotContainer.classList.add('is-hidden');
+        return;
+    }
+
+    const selectedFunctions = selectedCards.map(card => currentFunctions[card.dataset.id]);
+    const correctIds = correctAnswers.map(f => f.name);
+    const selectedIds = new Set(selectedFunctions.map(f => f.name));
+
+    const allSelectionsAreValid = selectedFunctions.every(f => correctIds.includes(f.name));
+
+    if (allSelectionsAreValid) {
+        if (selectedIds.size === correctIds.length) {
+            observationsPanel.innerHTML = '<p class="feedback-correct">Correct! You have found all the valid Random Variables for this Sigma Algebra.</p>';
+            plotContainer.classList.add('is-hidden');
+        } else {
+            observationsPanel.innerHTML = `<p class="feedback-partial">You're on the right track! All your selections are valid Random Variables, but there are more to find. (${selectedIds.size} out of ${correctIds.length} found)</p>`;
+            plotContainer.classList.add('is-hidden');
+        }
+    } else {
+        const firstInvalid = selectedFunctions.find(f => !correctIds.includes(f.name));
+        const checkResult = checkRV(currentSigmaAlgebra.sets, firstInvalid.mapping);
+        observationsPanel.innerHTML = `<p class="feedback-incorrect">Incorrect. The function <strong>${firstInvalid.name}</strong> is not a valid Random Variable.</p><p class="feedback-reason">${checkResult.reason}</p>`;
+        plotInvalidReason(firstInvalid, currentSigmaAlgebra.sets, parseFloat(checkResult.reason.split('=')[1]));
+    }
+}
+
+// --------------------------------------
+// 6. Event Listeners & Initialization
+// --------------------------------------
+newProblemBtn.addEventListener('click', setupProblem);
+checkBtn.addEventListener('click', checkAnswer);
+window.addEventListener('load', setupProblem);
