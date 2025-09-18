@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
-    <!-- FIX: Linking to the new, dedicated CSS file -->
     <link rel="stylesheet" href="./css/inverse-image.css">
     <script type="text/javascript" id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -33,13 +32,13 @@
                 <div class="v-collapsible is-size-5">Instructions</div>
                 <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                     <b>Quick theory overview:</b>
-                    <p>For a function \(\mathcal{f}\) that maps outcomes \(\omega\) from a sample space \(\Omega\) to the real numbers, the **inverse image** of a set \(B\) is the collection of all outcomes that map into \(B\). We are interested in sets of the form \(B = (-\infty, c]\). Therefore, the inverse image is:</p>
+                    <p>For a function \(\mathcal{f}\) that maps outcomes \(\omega\) from a sample space \(\Omega\) to the real numbers, the <b>inverse image</b> of a set \(B\) is the collection of all outcomes that map into \(B\). We are interested in sets of the form \(B = (-\infty, c]\). Therefore, the inverse image is:</p>
                     <p style="text-align:center; font-size: 1.2em;">\(f^{-1}((-\infty, c]) = \{ \omega_i \in \Omega \mid f(\omega_i) \leq c\}\)</p>
                     
                     <h4 style="font-weight: 600; font-size: 1.15em; margin-top: 1rem;">Procedure:</h4>
                     <ul style="list-style: disc; margin-left: 20px;">
-                        <li>Enter a value for the constant **'c'** in the input box.</li>
-                        <li>Press the **"Generate Function Values"** button. This will create a new random function \(\mathcal{f}\) and display its output values.</li>
+                        <li>Enter a value for the constant <b>'c'</b> in the input box.</li>
+                        <li>Press the <b>"Generate Function Values"</b> button. This will create a new random function \(\mathcal{f}\) and display its output values.</li>
                         <li>The plot will visualize the function values and show the threshold 'c' as a horizontal line.</li>
                         <li>Based on the definition, determine which outcomes \(\{\omega_1, \omega_2, \omega_3, \omega_4\}\) have function values less than or equal to 'c'.</li>
                         <li>Select the correct set from the grid of possible answers.</li>
@@ -76,7 +75,8 @@
                     </div>
                     <!-- Answer Grid -->
                     <div class="white-boxed-panel">
-                        <h4 class="v-datalist-subtitle">3. Select the correct inverse image set:</h4>
+                        <!-- MODIFIED LINE: Added id="answer-grid-title" to the h4 tag -->
+                        <h4 id="answer-grid-title" class="v-datalist-subtitle">3. Select the correct inverse image set:</h4>
                         <div id="answer-grid" class="answer-grid">
                             <!-- JS will populate this -->
                         </div>
