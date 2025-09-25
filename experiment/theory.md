@@ -1,4 +1,3 @@
-
 In a random experiment, the outcomes may not always be numerical and we maybe interested in some consequences of its random outcome. These outcomes maybe associated with some numerical values of interest using the notation of a random variable.
 
 ### Definition 1 _(Random variable)_ :
@@ -21,7 +20,7 @@ After the experiment is done and the outcome $\omega \in \Omega$ is known, a ran
 
 The distribution function of a random variable $\mathbb{X}$ is the function $F_X : \mathbb{R} \to [0, 1] $ given by $F_X(x) = \mathbb{P}(\mathbb{X} \leq x)$
 
-- For example 1, if $P_X(x) = 1/4$, for all $x \in X$ 
+- For Example 1, if $P_X(x) = 1/4$, for all $x \in X$
 
 $$
 \begin{equation}
@@ -31,13 +30,13 @@ $$
       \frac{1}{4} & \text{$0 \leq x < 1$}\\
       \frac{3}{4} & \text{$ 1 \leq x < 2$}\\
       1 & \text{$x \geq 2$} 
-    \end{cases}     
+    \end{cases}   
 \end{equation}
 $$
 
 ![alt text](./images/PMF1.jpg)
 
-- For example 2, if $P_W(\omega) = 1/4$, for all $\omega \in W$ 
+- For Example 2, if $P_W(\omega) = 1/4$, for all $\omega \in W$
 
 $$
 \begin{equation}
@@ -46,7 +45,7 @@ $$
       0 & \text{$\omega < 0$}\\
       \frac{3}{4} & \text{$ 0 \leq \omega < 4$}\\
       1 & \text{$\omega \geq 4$} 
-    \end{cases}     
+    \end{cases}   
 \end{equation}
 $$
 
@@ -64,4 +63,4 @@ Suppose $F$ is a CDF of $\mathbb{X}$. Then
 
 - $\mathbb{P}(\mathbb{X} > x) = 1 - F(x)$
 - $\mathbb{P}(x < \mathbb{X} \leq y) = F(y) -F(x)$
-- $\mathbb{P}(\mathbb{X} = x) = F(x) - \lim_{(h \to 0)} F(x-h)$
+- $\mathbb{P}(\mathbb{X} = x) = F(x) - \lim_{(h \to 0^+)} F(x-h)$

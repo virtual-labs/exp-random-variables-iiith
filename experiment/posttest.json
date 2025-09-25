@@ -55,7 +55,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "4. Let the sample space Ω = {1,2,3,4} and a random variable Y defined as Y(1)=1, Y(2)=1, Y(3)=2, Y(4)=2. What is the set Y⁻¹(1)?",
+      "question": "4. Let the sample space $\\Omega$ = {1,2,3,4} and a random variable Y defined as $Y(1)=1, Y(2)=1, Y(3)=2, Y(4)=2$. What is the set $Y^{-1}(1)$?",
       "answers": {
         "a": "{1}",
         "b": "{1,2}",

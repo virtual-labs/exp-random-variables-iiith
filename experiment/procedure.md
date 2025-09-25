@@ -20,12 +20,10 @@ In this sub-experiment, there are a few examples, one of which is selected rando
 
 This sub-experiment helps users understand the inverse image of a random variable function.
 
-* The interface consists of an HTML form where users input a value for $c$.
-* JavaScript handles the random generation of function values for $\mathcal{f}: \Omega \to \mathbb{R}$, where $\Omega$ contains 4 elements.
-* After entering $c$, users click the **Generate** button to display the mapping of $\Omega$ to $\mathbb{R}$.
-* Users select the subset of $\Omega$ that corresponds to the inverse image $f^{-1}(c)$ using interactive options.
-* JavaScript validates the selection and displays feedback in the observation section.
-* If the answer is correct, a graph is rendered to visualize the function mapping and the inverse image.
+* Users first need to input a value for $c$.
+* We then generate random function values for $\mathcal{f}: \Omega \to \mathbb{R}$
+* Users select the subset of $\Omega$ that corresponds to the inverse image $f^{-1}(c)$ from the given options.
+* Results are shown in the observation box once users press Submit button.
 
 ### Sub-Experiment 3 _(Valid random variable)_ :
 

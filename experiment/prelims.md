@@ -32,7 +32,7 @@ _The symmetric difference of two sets $E \; \& \; F$ is the set of all elements 
 
 $$
 \begin{align*}
-    E \Delta F = (E-F) \cup (F-E)
+    E \Delta F = (E\backslash F) \cup (F\backslash E)
 \end{align*}
 $$
 
@@ -112,11 +112,13 @@ All the subsets of $\Omega$ need not be events.
 
 ### Definition 2 _(Event space)_ :
 
-An event space is a collection $\mathcal{F}$ of events (subsets of $\Omega$), which satisfy the following properties of a $\sigma$ field
+An event space is a collection $\mathcal{F}$ of events (subsets of $\Omega$), which satisfy the following properties
 
 1. If $A_1, A_2, \cdots \in \mathcal{F}$, then $\bigcup_{i=1}^{\infty}A_i \in \mathcal{F}$
 2. If $A \in \mathcal{F}$, then $A^{C} \in \mathcal{F}$
 3. $\phi \in \mathcal{F}$
+
+any collection satisfying these properties is called a $\sigma$ field
 
 If $A \in \mathcal{F}$ then $A$ is said to be an event.
 
@@ -161,21 +163,22 @@ where, for example, $\sum_{i<j}$ sums over all $(i,j)$ with $i \neq j$.
 
 An event $A$ is called null event if $\mathbb{P}(A) = 0$, and if $\mathbb{P}(A) = 1$, we say that the event A occurs almost surely. Null events should not be confused with the impossible event $\phi$. Impossible event is null, but null events need not be impossible.
 
-
-
 ### Definition 4 _(Conditional Probability)_ :
-If $\mathbb{P}(B) > 0$, then the conditional probability that $A$ occurs given that $B$ occurs is defined as
-$$
 
+If $\mathbb{P}(B) > 0$, then the conditional probability that $A$ occurs given that $B$ occurs is defined as
+
+$$
 \begin{align*}
 \mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 \end{align*}
-
 $$
+
 ## Independence
+
 In general, the occurence of some event $B$ changes the probability that another event $A$ occurs, i.e. $P(A)$ and $P(A|B)$ can be different. If the probability remains unchanged, $P(A) = P(A|B)$ then we say that the two events $A \; \& \; B$ are independent.
 
 ### Definition 5 _(Independence)_ :
+
 Events $A \; \& \; B$ are called independent events if $\mathbb{P}(A \cap B) =  \mathbb{P}(A) \mathbb{P}(B)$. More generally, the events $A_i, i \in I$ are independent if
 
 $$
@@ -186,7 +189,7 @@ $$
 
 for all finite subsets $J$ of $I$.
 
-If the events $A_i, i \in I$ satisfy the property that $\mathbb{P}( A_i\cap A_j) = \mathbb{P}(A_i) \mathbb{P}(A_j) \forall i \neq j$ then it is called pairwaise independent events. 
+If the events $A_i, i \in I$ satisfy the property that $\mathbb{P}( A_i\cap A_j) = \mathbb{P}(A_i) \mathbb{P}(A_j) \forall i \neq j$ then it is called pairwaise independent events.
 
 Let $C$ be an event with $\mathbb{P}(C) > 0$, then the two events $A \; \& \; B$ are called conditionally independent given $C$ if
 

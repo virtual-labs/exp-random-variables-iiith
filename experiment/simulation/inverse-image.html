@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
     <link rel="stylesheet" href="./css/inverse-image.css">
+    <style>
+        /* Equal height boxes styling */
+        #experiment-area .columns.is-centered {
+            align-items: stretch;
+        }
+        
+        #experiment-area .v-datalist-container.components-list {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        #experiment-area .white-boxed-panel:last-child {
+            flex-grow: 1;
+        }
+    </style>
     <script type="text/javascript" id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -33,16 +49,16 @@
                 <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                     <b>Quick theory overview:</b>
                     <p>For a function \(\mathcal{f}\) that maps outcomes \(\omega\) from a sample space \(\Omega\) to the real numbers, the <b>inverse image</b> of a set \(B\) is the collection of all outcomes that map into \(B\). We are interested in sets of the form \(B = (-\infty, c]\). Therefore, the inverse image is:</p>
-                    <p style="text-align:center; font-size: 1.2em;">\(f^{-1}((-\infty, c]) = \{ \omega_i \in \Omega \mid f(\omega_i) \leq c\}\)</p>
+                    <p style="text-align:center; font-size: 1.2em;">\(f^{-1}(-\infty, c]) = \{ \omega_i \in \Omega \mid f(\omega_i) \leq c\}\)</p>
                     
                     <h4 style="font-weight: 600; font-size: 1.15em; margin-top: 1rem;">Procedure:</h4>
                     <ul style="list-style: disc; margin-left: 20px;">
                         <li>Enter a value for the constant <b>'c'</b> in the input box.</li>
                         <li>Press the <b>"Generate Function Values"</b> button. This will create a new random function \(\mathcal{f}\) and display its output values.</li>
-                        <li>The plot will visualize the function values and show the threshold 'c' as a horizontal line.</li>
+                        <li>The plot will visualize the function values and show the threshold <b>'c'</b> as a horizontal line.</li>
                         <li>Based on the definition, determine which outcomes \(\{\omega_1, \omega_2, \omega_3, \omega_4\}\) have function values less than or equal to 'c'.</li>
                         <li>Select the correct set from the grid of possible answers.</li>
-                        <li>The "Observations" panel will provide immediate feedback on your selection.</li>
+                        <li>The <b>"Observations"</b> panel will provide immediate feedback on your selection.</li>
                     </ul>
                 </div>
             </div>

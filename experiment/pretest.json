@@ -36,28 +36,11 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "3. Given sets X = {a,b,c,d} and Y = {c,d,e,f}, what is the symmetric difference X Δ Y?",
-      "answers": {
-        "a": "{c,d}",
-        "b": "{a,b,e,f}",
-        "c": "{a,b,c,d,e,f}",
-        "d": "{ }"
-      },
-      "explanations": {
-        "a": "This is the intersection, not the symmetric difference.",
-        "b": "Correct answer: symmetric difference = (X ∪ Y) - (X ∩ Y) = {a,b,e,f}.",
-        "c": "This is the union, not the symmetric difference.",
-        "d": "The sets are not identical, so symmetric difference is not empty."
-      },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
-    },
-    {
       "question": "4. For a sample space $\\Omega = \\{w_1,w_2, w_3\\}$, and a random variable $X$ such that $X(w_1) = -2.5 $, $X(w_2) = 3 $ and inverse images $X^{-1}(3.5) = \\{w_1, w_2, w_3\\}$ and $X^{-1}(0) = \\{ w_1\\}$, what can be the range for the value of $X(w_3) $ ?",
       "answers": {
-      "a": "($-\\infty$, $0$]" ,
-      "b": "($-\\infty$, $-2.5]$",
-      "c": "($0$, $3.5$]",
+      "a": "$(-\\infty$, $0]$" ,
+      "b": "$(-\\infty$, $-2.5]$",
+      "c": "$(0$, $3.5]$",
       "d": "None of the above"
       },
       "explanations": {
