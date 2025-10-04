@@ -57,10 +57,10 @@
     {
       "question": "4. Let the sample space $\\Omega$ = {1,2,3,4} and a random variable Y defined as $Y(1)=1, Y(2)=1, Y(3)=2, Y(4)=2$. What is the set $Y^{-1}(1)$?",
       "answers": {
-        "a": "{1}",
-        "b": "{1,2}",
-        "c": "{3,4}",
-        "d": "{2,3,4}"
+        "a": "\\{1\\}",
+        "b": "\\{1,2\\}",
+        "c": "\\{3,4\\}",
+        "d": "\\{2,3,4\\}"
       },
       "explanations": {
         "a": "Y(2) is also 1, so {1} is incomplete",
