@@ -146,7 +146,7 @@ function setupProblem() {
     
     problemDesc.innerHTML = `
         <p>Given Ω = <strong>{${SAMPLE_SPACE.join(', ')}}</strong> and an initial collection C = <strong>{${currentProblem.initial.join(', ')}}</strong>.</p>
-        <p>Select the minimum sets required to make C a Sigma Algebra.</p>
+        <p>Select the minimum number of sets which have to be added to C, to make C a σ algebra.</p>
     `;
 }
 

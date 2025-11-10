@@ -137,7 +137,7 @@ function setupProblem() {
     currentFunctions.forEach((func, i) => cardsContainer.appendChild(createFunctionCard(func, i)));
 
     const sigmaString = currentSigmaAlgebra.sets.map(setToString).join(', ');
-    problemDesc.innerHTML = `<p>Given \(\Omega\) = {${SAMPLE_SPACE.join(', ')}} and \(\mathcal{F}\) = <strong>{${sigmaString}}</strong></p>`;
+    problemDesc.innerHTML = `<p>Given Ω = {${SAMPLE_SPACE.join(', ')}} and 𝔽 = <strong>{${sigmaString}}</strong>, select all functions that are valid RVs:</p>`;
 }
 
 function checkAnswer() {

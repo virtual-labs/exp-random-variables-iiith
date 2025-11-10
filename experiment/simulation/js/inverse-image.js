@@ -11,6 +11,8 @@ const answerGrid = document.getElementById('answer-grid');
 const observationsPanel = document.getElementById('observations-panel');
 const chartCanvas = document.getElementById('inverse-chart');
 const plotWrapper = document.querySelector('.plot-wrapper');
+// NEW: Reference to the answer grid's title
+const answerGridTitle = document.getElementById('answer-grid-title');
 let chart;
 
 // --------------------------------------
@@ -71,6 +73,13 @@ function verifyAnswer(userAnswerSet) {
     plotWrapper.style.visibility = 'visible';
 }
 
+// NEW: Helper function to update the title text
+function updateAnswerGridTitle() {
+    const c = cInput.value;
+    // Use innerHTML to allow for the bold tag
+    answerGridTitle.innerHTML = `3. Select the correct inverse image set based on the value of c = <b>${c}</b>`;
+}
+
 // --------------------------------------
 // 4. Plotting
 // --------------------------------------
@@ -78,19 +87,15 @@ function updatePlot() {
     const c = parseFloat(cInput.value);
     if (isNaN(c) || functionValues.includes(null)) return;
     
-    // This creates the "floating" bar effect.
     const barHeight = 0.4;
     const barData = functionValues.map(val => [val - barHeight / 2, val + barHeight / 2]);
     
-    // Set bar colors based on whether they are <= c
     const barColors = functionValues.map(val => (val <= c ? COLOR_BELOW : COLOR_ABOVE));
 
-    // Update the chart's data
     chart.data.datasets[0].data = barData;
     chart.data.datasets[0].backgroundColor = barColors;
-    chart.data.datasets[1].data = [c, c, c, c]; // Update the threshold line
+    chart.data.datasets[1].data = [c, c, c, c]; 
 
-    // Dynamically adjust the y-axis to ensure all data is visible
     const allValues = [...functionValues, c];
     const yMax = Math.max(...allValues) + 2;
     const yMin = Math.min(...allValues) - 2;
@@ -104,7 +109,6 @@ function updatePlot() {
 // 5. Initialization
 // --------------------------------------
 function initialize() {
-    // --- Create all 16 possible subsets for the answer grid ---
     const allSubsets = Array.from({ length: 16 }, (_, i) => {
         const subset = [];
         if (i & 8) subset.push(OMEGA_CHARS[0]);
@@ -114,9 +118,8 @@ function initialize() {
         return subset;
     });
 
-    // --- Sort and create buttons for the answer grid ---
     allSubsets.sort((a, b) => a.length - b.length || a.join('').localeCompare(b.join('')));
-    answerGrid.innerHTML = ''; // Clear previous buttons
+    answerGrid.innerHTML = ''; 
     allSubsets.forEach(subset => {
         const button = document.createElement('button');
         button.className = 'button is-light ans-button';
@@ -126,31 +129,30 @@ function initialize() {
         answerGrid.appendChild(button);
     });
 
-    // --- Initialize the Chart ---
     chart = new Chart(chartCanvas, {
-        type: 'bar', // Use a bar chart as the base
+        type: 'bar',
         data: {
             labels: OMEGA_LABELS,
             datasets: [
                 {
                     label: 'f(ω) Values',
-                    data: [], // Data will be [min, max] for floating bars
+                    data: [],
                     backgroundColor: [],
                     borderColor: 'rgba(0,0,0,0.1)',
                     borderWidth: 1,
                     barThickness: 40,
-                    borderRadius: 20, // Creates the capsule effect
-                    order: 1 // Ensure bars are drawn behind the line
+                    borderRadius: 20,
+                    order: 1
                 },
                 {
-                    type: 'line', // Overlay a line chart for the threshold
+                    type: 'line',
                     label: 'Threshold c',
                     data: [],
                     borderColor: COLOR_LINE,
                     borderWidth: 3,
                     pointRadius: 0,
                     fill: false,
-                    order: 0 // Draw line on top of bars
+                    order: 0
                 }
             ]
         },
@@ -160,7 +162,7 @@ function initialize() {
             plugins: {
                 legend: { display: false },
                 title: { display: false },
-                tooltip: { enabled: false } // Disable tooltips for a cleaner look
+                tooltip: { enabled: false }
             },
             scales: {
                 y: {
@@ -175,13 +177,18 @@ function initialize() {
         }
     });
 
-    // --- Hide plot initially and set up event listeners ---
+    // --- Hide plot, update title, and set up event listeners ---
     plotWrapper.style.visibility = 'hidden';
+    
+    // MODIFIED: Added event listener and initial call
     cInput.addEventListener('input', () => {
         plotWrapper.style.visibility = 'hidden';
         observationsPanel.innerHTML = "<p>Value of 'c' changed. Please select an answer to see the result.</p>";
+        updateAnswerGridTitle(); // Update the title whenever 'c' changes
     });
     generateBtn.addEventListener('click', generateFunction);
+
+    updateAnswerGridTitle(); // Set the initial title on page load
 }
 
 window.addEventListener('load', initialize);
