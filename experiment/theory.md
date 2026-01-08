@@ -4,9 +4,9 @@ In a random experiment, the outcomes may not always be numerical and we maybe in
 
 A random variable is a function $X : \Omega \to \mathbb{R}$ with the property that $\{ \omega \in \Omega : X(\omega) \leq x \} \in \mathcal{F} $ for each $x \in \mathbb{R}$. Random variables map $\Omega$ into $\mathbb{R}$.
 
-![RV associated with a sample point](./images/RV1.png)
+![RV associated with a sample point](./images/RV1.png "RV associated with a sample point")
 
-![RV associated with a coin toss exp.](./images/RV2.png)
+![RV associated with a coin toss exp.](./images/RV2.png "RV associated with a coin toss exp.")
 
 **_Example 1_**
 A fair coin is tossed twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$, let $\mathbb{X}(\omega)$ be the number of heads in $\omega$ so $\mathbb{X}(HH) = 2, \mathbb{X}(HT) = \mathbb{X}(TH) = 1, \mathbb{X}(TT) = 0 $. This function $X : \Omega \rightarrow \mathbb(R)$ is a random variable with respect to the $\sigma$ algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT \}, \{ HH, HT, TH \}, \{ HH \}, \{ HT, TH, TT \} \} $,
@@ -34,7 +34,7 @@ $$
 \end{equation}
 $$
 
-![alt text](./images/PMF1.jpg)
+![alt text](./images/PMF1.jpg "Distribution for Example 1")
 
 - For Example 2, if $P_W(\omega) = 1/4$, for all $\omega \in W$
 
@@ -49,7 +49,7 @@ $$
 \end{equation}
 $$
 
-![alt text](./images/PMF2.jpg)
+![alt text](./images/PMF2.jpg "Distribution Function for Example 2")
 
 The CDF $F$ has the following properties
 
