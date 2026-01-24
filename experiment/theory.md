@@ -4,8 +4,10 @@ In a random experiment, the outcomes may not always be numerical and we maybe in
 
 A random variable is a function $X : \Omega \to \mathbb{R}$ with the property that $\{ \omega \in \Omega : X(\omega) \leq x \} \in \mathcal{F} $ for each $x \in \mathbb{R}$. Random variables map $\Omega$ into $\mathbb{R}$.
 
+**Figure 1:** RV associated with a sample point
 ![RV associated with a sample point](./images/RV1.png "RV associated with a sample point")
 
+**Figure 2:** RV associated with a coin toss experiment
 ![RV associated with a coin toss exp.](./images/RV2.png "RV associated with a coin toss exp.")
 
 **_Example 1_**
@@ -34,7 +36,8 @@ $$
 \end{equation}
 $$
 
-![alt text](./images/PMF1.jpg "Distribution for Example 1")
+**Figure 3:** Distribution for Example 1
+![Distribution for Example 1](./images/PMF1.jpg "Distribution for Example 1")
 
 - For Example 2, if $P_W(\omega) = 1/4$, for all $\omega \in W$
 
@@ -49,7 +52,8 @@ $$
 \end{equation}
 $$
 
-![alt text](./images/PMF2.jpg "Distribution Function for Example 2")
+**Figure 4:** Distribution Function for Example 2
+![Distribution Function for Example 2](./images/PMF2.jpg "Distribution Function for Example 2")
 
 The CDF $F$ has the following properties
 
