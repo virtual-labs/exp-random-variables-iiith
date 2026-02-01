@@ -4,11 +4,17 @@ In a random experiment, the outcomes may not always be numerical and we maybe in
 
 A random variable is a function $X : \Omega \to \mathbb{R}$ with the property that $\{ \omega \in \Omega : X(\omega) \leq x \} \in \mathcal{F} $ for each $x \in \mathbb{R}$. Random variables map $\Omega$ into $\mathbb{R}$.
 
-**Figure 1:** RV associated with a sample point
-![RV associated with a sample point](./images/RV1.png "RV associated with a sample point")
+<p align="center">
+  <img src="./images/RV1.png" />
+  <br>
+  <strong>Figure 1:</strong> RV associated with a sample point
+</p>
 
-**Figure 2:** RV associated with a coin toss experiment
-![RV associated with a coin toss exp.](./images/RV2.png "RV associated with a coin toss exp.")
+<p align="center">
+  <img src="./images/RV2.png" />
+  <br>
+  <strong>Figure 2:</strong> RV associated with a coin toss exp
+</p>
 
 **_Example 1_**
 A fair coin is tossed twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$, let $\mathbb{X}(\omega)$ be the number of heads in $\omega$ so $\mathbb{X}(HH) = 2, \mathbb{X}(HT) = \mathbb{X}(TH) = 1, \mathbb{X}(TT) = 0 $. This function $X : \Omega \rightarrow \mathbb(R)$ is a random variable with respect to the $\sigma$ algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT \}, \{ HH, HT, TH \}, \{ HH \}, \{ HT, TH, TT \} \} $,
@@ -36,8 +42,11 @@ $$
 \end{equation}
 $$
 
-**Figure 3:** Distribution for Example 1
-![Distribution for Example 1](./images/PMF1.jpg "Distribution for Example 1")
+<p align="center">
+  <img src="./images/PMF1.jpg" />
+  <br>
+  <strong>Figure 3:</strong> Distribution for Example 1
+</p>
 
 - For Example 2, if $P_W(\omega) = 1/4$, for all $\omega \in W$
 
@@ -52,8 +61,11 @@ $$
 \end{equation}
 $$
 
-**Figure 4:** Distribution Function for Example 2
-![Distribution Function for Example 2](./images/PMF2.jpg "Distribution Function for Example 2")
+<p align="center">
+  <img src="./images/PMF2.jpg" />
+  <br>
+  <strong>Figure 4:</strong> Distribution Function for Example 2
+</p>
 
 The CDF $F$ has the following properties
 
