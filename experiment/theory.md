@@ -17,22 +17,22 @@ A random variable is a function $X : \Omega \to \mathbb{R}$ with the property th
 </p>
 
 **_Example 1_**
-A fair coin is tossed twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$, let $\mathbb{X}(\omega)$ be the number of heads in $\omega$ so $\mathbb{X}(HH) = 2, \mathbb{X}(HT) = \mathbb{X}(TH) = 1, \mathbb{X}(TT) = 0 $. This function $X : \Omega \rightarrow \mathbb(R)$ is a random variable with respect to the $\sigma$ algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT \}, \{ HH, HT, TH \}, \{ HH \}, \{ HT, TH, TT \} \} $,
+A fair coin is tossed twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$, let $X(\omega)$ be the number of heads in $\omega$ so $X(HH) = 2, X(HT) = X(TH) = 1, X(TT) = 0 $. This function $X : \Omega \rightarrow \mathbb(R)$ is a random variable with respect to the $\sigma$ algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT \}, \{ HH, HT, TH \}, \{ HH \}, \{ HT, TH, TT \} \} $,
 
 **_Example 2_**
-Let $\mathbb{W}$ be a random variable based on the experiment where a person $A$ is gambling $B$ rs amount on the result of the experiment. He gambles cumalatively so that his fortunes double everytime a head appears and is annhilated when a tail appears. Lets assume that the person $A$ has gambled twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$ and the sigma algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT, TH, HT \}, \{ HH \}\} $, so $\mathbb{W}(HH) = 4B, \mathbb{W}(HT) = \mathbb{W}(TH) = \mathbb{W}(TT) = 0 $.
+Let $W$ be a random variable based on the experiment where a person $A$ is gambling $B$ rs amount on the result of the experiment. He gambles cumalatively so that his fortunes double everytime a head appears and is annhilated when a tail appears. Lets assume that the person $A$ has gambled twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$ and the sigma algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT, TH, HT \}, \{ HH \}\} $, so $W(HH) = 4B, W(HT) = W(TH) = W(TT) = 0 $.
 
-After the experiment is done and the outcome $\omega \in \Omega$ is known, a random variable $\mathbb{X} : \Omega \to \mathbb{R}$ takes some value.
+After the experiment is done and the outcome $\omega \in \Omega$ is known, a random variable $X : \Omega \to \mathbb{R}$ takes some value.
 
 ### Definition 2 _(Cumulative Distribution Function)_ :
 
-The distribution function of a random variable $\mathbb{X}$ is the function $F_X : \mathbb{R} \to [0, 1] $ given by $F_X(x) = \mathbb{P}(\mathbb{X} \leq x)$
+The distribution function of a random variable $X$ is the function $F_X : \mathbb{R} \to [0, 1] $ given by $F_X(x) = \mathbb{P}(X \leq x)$
 
 - For Example 1, if $P_X(x) = 1/4$, for all $x \in X$
 
 $$
 \begin{equation}
-  F_{\mathbb{X}}(x) =
+  F_{X}(x) =
     \begin{cases}
       0 & \text{$x < 0$}\\
       \frac{1}{4} & \text{$0 \leq x < 1$}\\
@@ -52,7 +52,7 @@ $$
 
 $$
 \begin{equation}
-  F_{\mathbb{W}}(\omega) =
+  F_{W}(\omega) =
     \begin{cases}
       0 & \text{$\omega < 0$}\\
       \frac{3}{4} & \text{$ 0 \leq \omega < 4$}\\
@@ -75,8 +75,30 @@ The CDF $F$ has the following properties
 
 $F$ is the cumulative distribution function of some random variables if and only if it satisfies the above 3 properties.
 
-Suppose $F$ is a CDF of $\mathbb{X}$. Then
+Suppose $F$ is a CDF of $X$. Then
 
-- $\mathbb{P}(\mathbb{X} > x) = 1 - F(x)$
-- $\mathbb{P}(x < \mathbb{X} \leq y) = F(y) -F(x)$
-- $\mathbb{P}(\mathbb{X} = x) = F(x) - \lim_{(h \to 0^+)} F(x-h)$
+- $\mathbb{P}(X > x) = 1 - F(x)$
+- $\mathbb{P}(x < X \leq y) = F(y) -F(x)$
+- $\mathbb{P}(X = x) = F(x) - \lim_{(h \to 0^+)} F(x-h)$
+
+
+### Definition 3 _(Inverse Image of a Random Variable)_ :
+
+For a random variable $X : \Omega \to \mathbb{R}$, the inverse image of a set $B \subseteq \mathbb{R}$ is the set
+$$
+X^{-1}(B) = \{\omega \in \Omega \mid X(\omega) \in B\}.
+$$
+
+For sets of the form $B = (-\infty, c]$, the inverse image is
+$$
+X^{-1}((-\infty, c]) = \{\omega \in \Omega \mid X(\omega) \le c\}.
+$$
+
+- For Example: Let $\Omega = \{\omega_1,\omega_2,\omega_3\}$ and let $X$ be a random variable defined as
+$$
+X(\omega_1)=0,\quad X(\omega_2)=1,\quad X(\omega_3)=2.
+$$
+For the set $B = (-\infty,1]$, the inverse image is
+$$
+X^{-1}((-\infty,1]) = \{\omega_1,\omega_2\}.
+$$
