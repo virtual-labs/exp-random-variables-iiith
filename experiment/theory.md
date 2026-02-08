@@ -85,20 +85,32 @@ Suppose $F$ is a CDF of $X$. Then
 ### Definition 3 _(Inverse Image of a Random Variable)_ :
 
 For a random variable $X : \Omega \to \mathbb{R}$, the inverse image of a set $B \subseteq \mathbb{R}$ is the set
+
 $$
+\begin{equation}
 X^{-1}(B) = \{\omega \in \Omega \mid X(\omega) \in B\}.
+\end{equation}
 $$
 
 For sets of the form $B = (-\infty, c]$, the inverse image is
+
 $$
+\begin{equation}
 X^{-1}((-\infty, c]) = \{\omega \in \Omega \mid X(\omega) \le c\}.
+\end{equation}
 $$
 
 - For Example: Let $\Omega = \{\omega_1,\omega_2,\omega_3\}$ and let $X$ be a random variable defined as
+
 $$
+\begin{equation}
 X(\omega_1)=0,\quad X(\omega_2)=1,\quad X(\omega_3)=2.
+\end{equation}
 $$
+
 For the set $B = (-\infty,1]$, the inverse image is
 $$
-X^{-1}((-\infty,1]) = \{\omega_1,\omega_2\}.
+\begin{equation}
+X^{-1}((-\infty,1]) = \{\omega_1,\omega_2\}
+\end{equation}
 $$
