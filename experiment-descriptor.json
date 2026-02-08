@@ -14,7 +14,7 @@
     {
       "target": "prelims.html",
       "source": "prelims.md",
-      "label": "Prelims",
+      "label": "Preliminaries",
       "unit-type": "task",
       "content-type": "text"
     },

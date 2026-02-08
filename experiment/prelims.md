@@ -106,7 +106,7 @@ A sample space is the set of all possible outcomes of an experiment, denoted by 
 An event can be defined as a subset of the appropriate sample space $\Omega$. If $\Omega = \{ H, T\}$, then an event $A$ cab be $\{H\}$ or $\{H\}^{C}$ or $\{H\} \cap \{T\}$ or else if $\Omega = \{ 1, 2, 3, 4, 5, 6 \}$, then $A$ can be $\{2, 4, 6\}$ or $\{1, 2, 3\}$ or $\{2\}^{C}$.
 
 - $\phi$ is said to be the **impossible event.**
-- $\Omega$ is said to be the **certain event** since some member of $\Omega$ will ceetainly occur.
+- $\Omega$ is said to be the **certain event** since some member of $\Omega$ will certainly occur.
 
 All the subsets of $\Omega$ need not be events.
 
