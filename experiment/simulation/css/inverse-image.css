@@ -1,0 +1,63 @@
+/* ----------------------------------------
+   Base & General Styling (Consistent)
+   ---------------------------------------- */
+body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; padding-top: 20px; }
+.tasks-heading { text-align: center; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: #444; }
+.v-tabs ul { display: flex; overflow-x: auto; white-space: nowrap; list-style: none; padding: 0; margin: 0 3%; border-bottom: 1px solid #ddd; }
+.v-tabs li { display: inline-block; margin: 0; }
+.v-tabs a { display: inline-block; padding: 0.75rem 1.25rem; text-decoration: none; color: #333; font-weight: 500; }
+.v-tabs li.active > a { color: #3273dc; border-bottom: 3px solid #3273dc; }
+.subheading-box { background-color: #f7fdf7; border-left: 4px solid #3c763d; padding: 0.75rem 1rem; margin: 1rem 3% 1.5rem 3%; border-radius: 4px; }
+.subheading-box .title { color: #3c763d; font-size: 1.25rem; margin: 0; font-weight: 600; }
+.v-datalist-container { border: 2px solid #8dc63f; border-radius: 8px; padding: 1rem; background-color: #fafafa; }
+.v-datalist-title, .v-datalist-subtitle { margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #eee; text-align: center; }
+.white-boxed-panel { background-color: #fff; border: 1px solid #dbdbdb; border-radius: 6px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07); }
+
+/* ----------------------------------------
+   NEW STYLES FOR THIS EXPERIMENT
+   ---------------------------------------- */
+.value-item span {
+    margin-right: 10px; /* Add spacing between the label and the value */
+}
+
+
+.control-panel {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-end;
+}
+.control-item { flex: 1; }
+
+.function-values-display {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    font-size: 1.1em;
+}
+.value-item span {
+    font-weight: bold;
+    color: #3273dc;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.answer-grid {
+    display: grid;
+    /* FIX: Changed to force 4 columns for a stable numpad-like layout */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.ans-button {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.plot-wrapper { height: 400px; }
+.plot-wrapper.is-hidden {
+    display: none;
+}
+
+.observations-content { font-size: 1.05em; text-align: center; min-height: 50px; }
+.feedback-correct { color: #23d160; font-weight: bold; }
+.feedback-incorrect { color: #ff3860; font-weight: bold; }
