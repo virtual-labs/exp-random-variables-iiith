@@ -28,7 +28,7 @@ After the experiment is done and the outcome $\omega \in \Omega$ is known, a ran
 
 The distribution function of a random variable $X$ is the function $F_X : \mathbb{R} \to [0, 1] $ given by $F_X(x) = \mathbb{P}(X \leq x)$
 
-- For Example 1, if $P_X(x) = 1/4$, for all $x \in X$
+- For Example 1, if $\mathbb{P}_X(x) = 1/4$, for all $x \in X$
 
 $$
 \begin{equation}
@@ -48,7 +48,7 @@ $$
   <strong>Figure 3:</strong> Distribution for Example 1
 </p>
 
-- For Example 2, if $P_W(\omega) = 1/4$, for all $\omega \in W$
+- For Example 2, if $\mathbb{P}_W(\omega) = 1/4$, for all $\omega \in W$
 
 $$
 \begin{equation}
