@@ -1,0 +1,116 @@
+In a random experiment, the outcomes may not always be numerical and we maybe interested in some consequences of its random outcome. These outcomes maybe associated with some numerical values of interest using the notation of a random variable.
+
+### Definition 1 _(Random variable)_ :
+
+A random variable is a function $X : \Omega \to \mathbb{R}$ with the property that $\{ \omega \in \Omega : X(\omega) \leq x \} \in \mathcal{F} $ for each $x \in \mathbb{R}$. Random variables map $\Omega$ into $\mathbb{R}$.
+
+<p align="center">
+  <img src="./images/RV1.png" />
+  <br>
+  <strong>Figure 1:</strong> RV associated with a sample point
+</p>
+
+<p align="center">
+  <img src="./images/RV2.png" />
+  <br>
+  <strong>Figure 2:</strong> RV associated with a coin toss exp
+</p>
+
+**_Example 1_**
+A fair coin is tossed twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$, let $X(\omega)$ be the number of heads in $\omega$ so $X(HH) = 2, X(HT) = X(TH) = 1, X(TT) = 0 $. This function $X : \Omega \rightarrow \mathbb(R)$ is a random variable with respect to the $\sigma$ algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT \}, \{ HH, HT, TH \}, \{ HH \}, \{ HT, TH, TT \} \} $,
+
+**_Example 2_**
+Let $W$ be a random variable based on the experiment where a person $A$ is gambling $B$ rs amount on the result of the experiment. He gambles cumalatively so that his fortunes double everytime a head appears and is annhilated when a tail appears. Lets assume that the person $A$ has gambled twice. The sample space can be written as $\Omega = \{HH, HT, TH, TT\}$. For $\omega \in \Omega$ and the sigma algebra $\mathcal{F} = \{ \phi, \Omega, \{ TT, TH, HT \}, \{ HH \}\} $, so $W(HH) = 4B, W(HT) = W(TH) = W(TT) = 0 $.
+
+After the experiment is done and the outcome $\omega \in \Omega$ is known, a random variable $X : \Omega \to \mathbb{R}$ takes some value.
+
+### Definition 2 _(Cumulative Distribution Function)_ :
+
+The distribution function of a random variable $X$ is the function $F_X : \mathbb{R} \to [0, 1] $ given by $F_X(x) = \mathbb{P}(X \leq x)$
+
+- For Example 1, if $\mathbb{P}_X(x) = 1/4$, for all $x \in X$
+
+$$
+\begin{equation}
+  F_{X}(x) =
+    \begin{cases}
+      0 & \text{$x < 0$}\\
+      \frac{1}{4} & \text{$0 \leq x < 1$}\\
+      \frac{3}{4} & \text{$ 1 \leq x < 2$}\\
+      1 & \text{$x \geq 2$} 
+    \end{cases}   
+\end{equation}
+$$
+
+<p align="center">
+  <img src="./images/PMF1.jpg" />
+  <br>
+  <strong>Figure 3:</strong> Distribution for Example 1
+</p>
+
+- For Example 2, if $\mathbb{P}_W(\omega) = 1/4$, for all $\omega \in W$
+
+$$
+\begin{equation}
+  F_{W}(\omega) =
+    \begin{cases}
+      0 & \text{$\omega < 0$}\\
+      \frac{3}{4} & \text{$ 0 \leq \omega < 4$}\\
+      1 & \text{$\omega \geq 4$} 
+    \end{cases}   
+\end{equation}
+$$
+
+<p align="center">
+  <img src="./images/PMF2.jpg" />
+  <br>
+  <strong>Figure 4:</strong> Distribution Function for Example 2
+</p>
+
+The CDF $F$ has the following properties
+
+- $\lim_{x \to - \infty} F(x) = 0 $, $\lim_{x \to \infty} F(x) = 1$
+- if $x < y$. then $F(x) \leq F(y)$
+- $F$ is a right continous, that is $F(x + h) \to F(x)$ as $h \to 0$
+
+$F$ is the cumulative distribution function of some random variables if and only if it satisfies the above 3 properties.
+
+Suppose $F$ is a CDF of $X$. Then
+
+- $\mathbb{P}(X > x) = 1 - F(x)$
+- $\mathbb{P}(x < X \leq y) = F(y) -F(x)$
+- $\mathbb{P}(X = x) = F(x) - \lim_{(h \to 0^+)} F(x-h)$
+
+
+### Definition 3 _(Inverse Image of a Random Variable)_ :
+
+For a random variable $X : \Omega \to \mathbb{R}$, the inverse image of a set $B \subseteq \mathbb{R}$ is the set
+
+$$
+\begin{equation}
+X^{-1}(B) = \{\omega \in \Omega \mid X(\omega) \in B\}.
+\end{equation}
+$$
+
+For sets of the form $B = (-\infty, c]$, the inverse image is
+
+$$
+\begin{equation}
+X^{-1}((-\infty, c]) = \{\omega \in \Omega \mid X(\omega) \le c\}.
+\end{equation}
+$$
+
+- For Example: Let $\Omega = \{\omega_1,\omega_2,\omega_3\}$ and let $X$ be a random variable defined as
+
+$$
+\begin{equation}
+X(\omega_1)=0,\quad X(\omega_2)=1,\quad X(\omega_3)=2.
+\end{equation}
+$$
+
+For the set $B = (-\infty,1]$, the inverse image is
+$$
+\begin{equation}
+X^{-1}((-\infty,1]) = \{\omega_1,\omega_2\}
+\end{equation}
+$$

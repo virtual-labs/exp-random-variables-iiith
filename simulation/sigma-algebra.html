@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <link rel="stylesheet" href="./css/sigma-algebra.css">
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+            <script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+    <title>Sigma Algebra</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="tasks-heading">Tasks</div>
+    <div class="v-tabs">
+        <ul>
+            <!-- FIX: Added correct links -->
+            <li class="is-active"><a>Sub Experiment 1</a></li>
+            <li><a href="inverse-image.html">Sub Experiment 2</a></li>
+            <li><a href="valid-rv.html">Sub Experiment 3</a></li>
+        </ul>
+    </div>
+
+    <div class="subheading-box">
+        <p class="title">Constructing a Sigma Algebra</p>
+    </div>
+
+    <div class="columns is-centered">
+        <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-collapsible-instruction-container v-instruction-container">
+                <div class="v-collapsible is-size-5">Instructions</div>
+                <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+                    <b>Quick theory overview:</b>
+                        <p>A collection of subsets <b>\(\mathcal{F}\)</b> of a sample space <b>&Omega;</b> is a <b>Sigma Algebra</b> if it satisfies three axioms:</p>
+                        <ul style="list-style: disc; margin-left: 20px; margin-top: 1rem;">
+                            <li><b>Axiom 1:</b> It contains the empty set (&empty;) and the sample space (&Omega;).</li>
+                            <li><b>Axiom 2 (Closure under Complementation):</b> If a set A is in <b>&#x1D544;</b>, its complement A<sup>c</sup> must also be in <b>&#x1D544;</b>.</li>
+                            <li><b>Axiom 3 (Closure under Countable Unions):</b> The union of any countable collection of sets in <b>&#x1D544;</b> is also in <b>&#x1D544;</b>.</li>
+                        </ul>
+                    <h4 style="font-weight: 600; font-size: 1.15em; margin-top: 1rem;">Procedure:</h4>
+                        <ul style="list-style: disc; margin-left: 20px;">
+                            <li>A sample space &Omega; and an initial collection of sets are given.</li>
+                            <li>From the <b>"Available Sets"</b> panel, click to select the <b>minimum number of additional sets</b> needed to make the collection a valid Sigma Algebra.</li>
+                            <li>Selected sets will move to the <b>"Your Added Sets"</b> panel. You can click them again to de-select them.</li>
+                            <li>If you are stuck, press the <b>"Get Hint"</b> button.</li>
+                            <li>Once you are confident, click <b>"Check Answer"</b>. The "Observations" panel will provide feedback.</li>
+                            <li>Press <b>"New Problem"</b> to try again with a different initial collection.</li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <section id="experiment-area">
+        <div class="columns is-centered">
+            <div class="column is-8-desktop is-12-tablet is-12-mobile">
+                <div class="v-datalist-container components-list">
+                    <div id="problem-description" class="problem-text"></div>
+                    
+                    <div class="white-boxed-panel">
+                        <h4 class="v-datalist-subtitle">Available Sets (Click to Add)</h4>
+                        <div id="available-sets" class="tile-container"></div>
+                    </div>
+
+                    <div class="white-boxed-panel">
+                        <h4 class="v-datalist-subtitle">Your Added Sets (Click to Remove)</h4>
+                        <div id="user-collection" class="tile-container"></div>
+                    </div>
+
+                    <div class="button-container">
+                        <!-- FIX: Added Hint Button -->
+                        <button id="hint-btn" class="button is-info is-medium">Get Hint</button>
+                        <button id="check-btn" class="button is-success is-medium">Check Answer</button>
+                        <button id="new-problem-btn" class="button is-primary is-medium">New Problem</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-4-desktop is-12-tablet is-12-mobile">
+                <div class="v-datalist-container components-list">
+                    <div class="v-datalist-title">Observations</div>
+                    <div id="observations-panel" class="observations-content"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- FIX: Added required JS for virtual-style library components like dropdown -->
+<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+<script src="./js/sigma-algebra.js"></script>
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+</html>
